@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0B1220">
+<meta name="description" content="반도체 장비 영업을 위한 AI 전화영어 · micro SAW &amp; VISION PLACEMENT 전문">
+<title>FabTalk · 반도체 영업 전화영어</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{
+  --navy:#0B1220; --navy2:#111A2C; --line-d:#1E293B; --line-d2:#334155;
+  --bg:#F4F6FA; --card:#FFFFFF; --ink:#0F172A; --ink2:#334155; --muted:#475569; --line:#E2E8F0;
+  --accent:#2F5BEA; --accent-ink:#1D4ED8; --accent-soft:#E8EEFF;
+  --wrong:#C2410C; --wrong-d:#FDBA74; --right:#1D4ED8; --right-d:#93C5FD;
+  --danger:#DC2626; --ok:#047857;
+  --r:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+a{color:var(--accent-ink)}
+.app{max-width:520px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;position:relative}
+.screen{flex:1;padding:calc(20px + env(safe-area-inset-top)) 18px calc(96px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:18px}
+.screen.dark{background:var(--navy);color:#F8FAFC}
+h1{margin:0;font-size:24px;letter-spacing:-.4px}
+h2{margin:0;font-size:17px}
+h3{margin:0;font-size:15px}
+p{margin:0}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.row{display:flex;align-items:center;gap:10px}
+.between{justify-content:space-between}
+.col{display:flex;flex-direction:column;gap:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.card.dark{background:var(--navy);border:none;color:#fff}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:5px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink);font-weight:600}
+.chip.gray{background:#EEF2F7;color:var(--ink2)}
+.chip.dark{background:var(--line-d);color:#CBD5E1;font-weight:500}
+.btn{min-height:48px;border:none;border-radius:14px;padding:0 18px;font-weight:600;font-size:15px;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:disabled{opacity:.5}
+.btn.ghost{background:#fff;border:1px solid #CBD5E1;color:var(--ink)}
+.btn.block{width:100%}
+.btn.big{min-height:56px;font-size:16px}
+.btn.danger{background:#fff;border:1px solid #FCA5A5;color:var(--danger)}
+.iconbtn{width:44px;height:44px;border-radius:22px;border:1px solid var(--line);background:#fff;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.progress{height:6px;border-radius:3px;background:var(--line-d);overflow:hidden}
+.progress>div{height:100%;background:var(--accent)}
+.progress.light{background:#E2E8F0}
+.scen{width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:var(--r);padding:14px 14px;display:flex;gap:12px;align-items:center}
+.scen .ico{width:40px;height:40px;border-radius:12px;background:#F1F5F9;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--ink2)}
+.scen.done .ico{background:var(--accent-soft);color:var(--accent-ink)}
+.scen .t{font-size:15px;font-weight:600}
+.scen .d{font-size:12px;color:var(--muted);margin-top:3px;line-height:1.4}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:520px;height:68px;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:center;padding-bottom:env(safe-area-inset-bottom);z-index:10}
+.nav button{background:none;border:none;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;color:var(--muted);min-width:64px;min-height:48px;justify-content:center}
+.nav button.on{color:var(--accent-ink);font-weight:700}
+.stat{flex:1;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}
+.stat b{display:block;font-size:22px;margin-top:2px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:13px;font-weight:600;color:var(--ink2)}
+.input{min-height:46px;border:1px solid #CBD5E1;border-radius:12px;padding:10px 12px;background:#fff;width:100%}
+textarea.input{min-height:90px;resize:vertical}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px}
+.switch input{width:22px;height:22px;accent-color:var(--accent)}
+.note{font-size:12px;color:var(--muted);line-height:1.5}
+.alert{border-radius:12px;padding:12px 14px;font-size:13px;line-height:1.5;background:#FFF7ED;color:#7C2D12;border:1px solid #FED7AA}
+.alert.info{background:var(--accent-soft);color:#1E3A8A;border-color:#C7D2FE}
+.alert.ok{background:#ECFDF5;color:#065F46;border-color:#A7F3D0}
+.toast{position:fixed;left:50%;bottom:86px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:12px;font-size:13px;z-index:50;max-width:90%;text-align:center}
+/* call */
+.call-head{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.persona{display:flex;flex-direction:column;align-items:center;gap:6px}
+.avatar{width:72px;height:72px;border-radius:36px;background:var(--line-d);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700}
+.avatar.speaking{box-shadow:0 0 0 6px rgba(47,91,234,.25)}
+.timer{font-size:15px;color:var(--right-d);font-weight:600;letter-spacing:1px;font-variant-numeric:tabular-nums}
+.callscr{flex:none;height:100vh;height:100dvh;padding-bottom:calc(16px + env(safe-area-inset-bottom));gap:12px;overflow:hidden}
+.log{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:4px 0;min-height:0;-webkit-overflow-scrolling:touch}
+.bub{max-width:86%;padding:11px 14px;font-size:15px;line-height:1.5;border-radius:16px}
+.bub.ai{align-self:flex-start;background:var(--line-d);color:#F1F5F9;border-top-left-radius:4px}
+.bub.me{align-self:flex-end;background:var(--accent);color:#fff;border-top-right-radius:4px}
+.bub .ko{display:block;margin-top:6px;font-size:13px;color:#CBD5E1;border-top:1px solid var(--line-d2);padding-top:6px}
+.bub-tools{display:flex;gap:6px;margin-top:6px}
+.mini{background:transparent;border:1px solid var(--line-d2);color:#CBD5E1;border-radius:14px;font-size:11px;min-height:28px;padding:0 10px}
+.corr{align-self:flex-end;width:86%;background:#1A2333;border:1px solid var(--line-d2);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:5px}
+.corr .lab{font-size:11px;font-weight:700;letter-spacing:.5px}
+.corr .wrong{color:var(--wrong-d);text-decoration:line-through;font-size:13px}
+.corr .right{color:var(--right-d);font-weight:600;font-size:15px}
+.corr .why{color:#CBD5E1;font-size:12px;line-height:1.5}
+.status{text-align:center;font-size:13px;color:#94A3B8;min-height:20px}
+.live{align-self:flex-end;max-width:86%;color:#CBD5E1;font-size:14px;font-style:italic}
+.controls{display:flex;justify-content:space-between;align-items:center;padding:0 4px}
+.cbtn{width:56px;height:56px;border-radius:28px;border:none;background:var(--line-d);display:flex;align-items:center;justify-content:center;color:#F8FAFC}
+.cbtn.end{background:var(--danger)}
+.mic{width:84px;height:84px;border-radius:42px;border:4px solid #1E3A8A;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff}
+.mic.on{background:#fff;color:var(--accent);border-color:var(--accent);animation:pulse 1.4s infinite}
+.mic:disabled{opacity:.45}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(147,197,253,.6)}70%{box-shadow:0 0 0 16px rgba(147,197,253,0)}100%{box-shadow:0 0 0 0 rgba(147,197,253,0)}}
+.composer{display:flex;gap:8px}
+.composer input{flex:1;min-height:48px;border-radius:24px;border:1px solid var(--line-d2);background:var(--navy2);color:#fff;padding:0 16px}
+.hintbox{background:#13203A;border:1px dashed #3B5BA9;border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.5;color:#DBEAFE}
+.dark .chip{background:var(--line-d);color:#CBD5E1}
+.spinner{width:22px;height:22px;border:3px solid #CBD5E1;border-top-color:var(--accent);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+/* report */
+.score-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.score{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 8px;text-align:center}
+.score b{display:block;font-size:22px}
+.citem{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:5px}
+.citem .wrong{color:var(--wrong);text-decoration:line-through;font-size:14px}
+.citem .right{color:var(--right);font-weight:600;font-size:15px}
+.citem .why{color:var(--muted);font-size:12px;line-height:1.5}
+.exp{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line-d)}
+.exp:last-child{border-bottom:none}
+.week{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff;width:100%;text-align:left}
+.week.cur{border:2px solid var(--accent)}
+.wnum{width:40px;height:40px;border-radius:12px;background:#F1F5F9;display:flex;align-items:center;justify-content:center;font-weight:700;flex-shrink:0}
+.week.cur .wnum{background:var(--accent);color:#fff}
+.week.past .wnum{background:var(--accent-soft);color:var(--accent-ink)}
+.tabs{display:flex;gap:6px;background:#E9EDF4;padding:4px;border-radius:12px}
+.tabs button{flex:1;border:none;background:transparent;min-height:40px;border-radius:9px;font-weight:600;color:var(--muted)}
+.tabs button.on{background:#fff;color:var(--ink)}
+.bars{display:flex;align-items:flex-end;gap:6px;height:64px}
+.bars div{flex:1;background:var(--accent);border-radius:4px 4px 0 0;min-height:3px}
+.dlg-back{position:fixed;inset:0;background:rgba(15,23,42,.55);display:flex;align-items:center;justify-content:center;padding:24px;z-index:60}
+.dlg{background:#fff;color:var(--ink);border-radius:18px;padding:20px;max-width:360px;width:100%;line-height:1.5}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+:focus-visible{outline:3px solid #93C5FD;outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script>
+'use strict';
+/* =====================================================================
+   FabTalk — AI 전화영어 for semiconductor equipment sales
+   Domain: Hanmi Semiconductor micro SAW & VISION PLACEMENT (MSVP)
+   Runs two ways:
+   (A) Inside a Claude artifact → uses claude.use('sample'|'dictation'|'tts'|'db')
+   (B) Standalone (GitHub Pages etc.) → Claude API (user key) + Web Speech API + localStorage
+   ===================================================================== */
+
+/* ---------------------------- DOMAIN KNOWLEDGE ---------------------------- */
+const KNOWLEDGE = `
+=== DOMAIN KNOWLEDGE: micro SAW & VISION PLACEMENT (MSVP) ===
+(Use this to speak like a real expert. Facts marked [verify] come from public sources and may be outdated: never volunteer exact numbers from them; if the learner states a spec, accept it unless clearly impossible.)
+
+WHAT MSVP IS
+- An integrated back-end (packaging) system by Hanmi Semiconductor (Korea). "micro SAW" = package singulation saw that cuts strips/substrates into individual packages. "VISION PLACEMENT" (VP) = handler that cleans, dries, inspects (high-resolution 2D/3D vision), sorts (good/reject bins) and loads units into trays. Because of the process flow the two work as ONE system.
+- Process flow: strip loading -> pre-cut vision alignment (fiducials/cut streets) -> sawing on a chuck table -> cleaning -> drying -> 2D/3D inspection -> sorting -> tray loading/offloading.
+- Applications: BGA, QFN, MAP-type strips; memory (DRAM, NAND, HBM-related packages) and system semiconductors; large-area FC-BGA (flip-chip BGA) substrates for AI servers, where larger panels make warpage control and cutting precision more critical.
+- Hanmi's Vision Placement: first generation 1998; No.1 global market share since 2004 (company claim, 20+ consecutive years).
+- micro SAW was developed in-house and launched 2021 (before that the saw was sourced from a Japanese maker, which lengthened delivery). In-house saw shortened MSVP production lead time and removed supply risk.
+- micro SAW lineup [verify]: P2101 dual-chuck saw (10-inch, two independent chuck tables & blades for simultaneous cutting); P1201 for jumbo PCB panels up to 500 x 500 mm; P1121 12-inch; T2101 tape type; GL2101 glass/lens/filter saw.
+- Latest generation [verify]: "7th-generation micro SAW & VISION PLACEMENT 6.0 GRIFFIN" (2024): Blade Change Master (automatic blade replacement), Auto Kit Change, FSD (Full Self Device setup: insert strip and tray, the machine recognizes align marks and builds the recipe/report automatically; setup time reported as about 8 hours by a skilled engineer -> about 35 minutes).
+- Distributor-listed P2101 features [verify]: active motion profiles, post-cutting alignment, intelligent pattern matching, auto jig teaching, auto blade dressing, water detection, smart vacuum pump, cutting simulator, 8 cutting channels.
+- Warranty: in 2022 Hanmi announced a 2-year standard warranty on micro SAW [verify current policy].
+- Showrooms/demo sites have been opened in Suzhou (China) and Zhongli (Taiwan) [verify].
+
+GENERAL SAWING KNOW-HOW (industry-standard, safe to discuss)
+- Blade: diamond blades (resin bond, nickel/electroformed bond, metal/sintered bond, hybrid); hub vs hubless; blade thickness determines kerf width; blade wear; dressing exposes fresh diamonds; broken-blade detection; blade height (Z) setup.
+- Spindle speed (krpm), feed rate (mm/s), cut depth into tape/jig, cutting water/coolant flow, DI water, cleaning nozzles.
+- Typical quality issues: top-side/back-side chipping, burrs (on metal leads, esp. QFN copper), slivers, delamination, die fly-off, kerf width variation, cut position shift, cracks, warpage-induced misalignment.
+- Root-cause levers: wrong blade spec, worn/loaded blade (needs dressing), feed too fast, coolant nozzle misaligned, vacuum leak on chuck/jig, strip warpage, alignment recipe errors.
+- Vision inspection: 2D (marking, package surface, chipping, foreign material, dimensions), 3D (ball height/coplanarity, warpage). Terms: overkill (false reject) vs underkill (escape), recipe/threshold tuning, golden sample, reject bin, tray mapping.
+- Productivity terms: UPH (units per hour), cycle time, throughput, uptime/availability, MTBF, MTBA, MTTR, OEE, yield, CoO/TCO (cost of ownership), footprint, consumables (blades, filters), operator-free/unmanned operation, SECS/GEM host communication.
+
+EQUIPMENT SALES PROCESS
+- Lead generation (SEMICON shows, referrals) -> needs analysis -> demo/evaluation (sample cutting) -> RFQ -> quotation -> negotiation -> PO -> manufacturing -> FAT (factory acceptance test at maker's site) -> shipping -> installation & setup -> SAT (site acceptance test) -> warranty & CS (customer service) engineers, spare parts.
+- Commercial terms: unit price, options, Incoterms (EXW, FOB, CIF, DAP), payment terms (T/T, L/C, e.g. 30% down payment / 70% before shipment), lead time, delivery schedule, warranty period, training, spare-parts kit, local service support.
+- Typical customers: OSATs (outsourced assembly & test), IDMs (memory/logic makers' packaging lines), substrate makers (FC-BGA), module makers. Common regions: Taiwan, China, Malaysia (Penang), Vietnam, Philippines, Korea, US.
+- Never invent prices, delivery dates or performance numbers on behalf of Hanmi. If the learner needs a number, they may say it; if you (as customer) need one, ask for it.
+`;
+
+/* ---------------------------- 12-WEEK CURRICULUM ---------------------------- */
+const PHASES = [
+  {id:1, name:'기초 다지기', weeks:[1,4], desc:'짧고 정확한 문장, 전화 기본 매너, 숫자·일정 확인'},
+  {id:2, name:'영업 실전', weeks:[5,8], desc:'스펙 설명, 견적·납기, 기술 이슈 대응'},
+  {id:3, name:'협상·고급', weeks:[9,12], desc:'가격 협상, 클레임, 설득, 실전 종합 평가'},
+];
+const WEEKS = [
+ {w:1, theme:'첫 통화와 자기소개', grammar:'현재시제 · 자기소개 · 통화 목적 말하기',
+  expr:["This is ___ from Hanmi Semiconductor.","I'm calling regarding ___.","Is this a good time to talk?","Could I speak to the person in charge of ___?"],
+  scen:[
+   {id:'w1s1', title:'콜드콜: 구매 담당자에게 첫 연락', icon:'phone', persona:{name:'Daniel Lim', init:'DL', title:'Procurement Manager', org:'OSAT in Penang, Malaysia', voice:'rounded'},
+    situation:"The learner cold-calls you. You have never heard of them. You are polite but busy. You currently use another vendor's saw and a separate handler.",
+    goal_ko:'자기소개 → 회사 소개 → 통화 목적 → 미팅 요청', goal_en:"Introduce yourself and Hanmi, state the purpose, and ask for a short online meeting."},
+   {id:'w1s2', title:'걸려온 문의 전화 응대', icon:'inbox', persona:{name:'Nguyen Thi Mai', init:'NM', title:'Equipment Engineer', org:'assembly plant in Bac Ninh, Vietnam', voice:'airy'},
+    situation:"You call Hanmi's sales office. You want to know who handles MSVP sales for Vietnam and you want a brochure. The learner answers the phone.",
+    goal_ko:'전화 받기 → 용건 파악 → 담당자 안내 → 연락처 받기', goal_en:"Answer professionally, find out what she needs, and take her contact details."},
+   {id:'w1s3', title:'전시회 후 팔로업 콜', icon:'calendar', persona:{name:'Kevin Huang', init:'KH', title:'Deputy Director, Process Engineering', org:'FC-BGA substrate maker in Taoyuan, Taiwan', voice:'buttery'},
+    situation:"You met the learner briefly at the SEMICON Taiwan booth last week. You remember the MSVP demo but not the learner's name.",
+    goal_ko:'만남 상기시키기 → 관심사 확인 → 다음 단계 제안', goal_en:"Remind him where you met, check his interest, and propose a next step."},
+ ]},
+ {w:2, theme:'MSVP 공정 설명', grammar:'수동태 (is cut / are inspected) · 순서 표현 (first, then, after that)',
+  expr:["First, the strip is aligned using fiducial marks.","After cutting, the units are cleaned and dried.","Then each unit is inspected by 2D and 3D vision.","Finally, good units are loaded into trays."],
+  scen:[
+   {id:'w2s1', title:'신입 구매 담당자에게 공정 설명', icon:'flow', persona:{name:'Emily Carter', init:'EC', title:'Junior Buyer', org:'US OSAT in Arizona', voice:'airy'},
+    situation:"You are new to semiconductors and not technical. You ask the learner to explain, step by step, what MSVP does. Ask simple follow-up questions like 'What does singulation mean?'",
+    goal_ko:'절단→세척→건조→검사→선별→적재 순서로 쉽게 설명', goal_en:"Explain the MSVP process step by step in simple words."},
+   {id:'w2s2', title:'비전 검사 원리 질문', icon:'eye', persona:{name:'Rajesh Kumar', init:'RK', title:'Process Engineer', org:'OSAT in Penang, Malaysia', voice:'rounded'},
+    situation:"You ask how the vision system catches defects. You care about 2D vs 3D inspection, chipping detection, ball coplanarity and false rejects (overkill).",
+    goal_ko:'2D/3D 검사 차이, 검출 불량 종류 설명', goal_en:"Explain what 2D and 3D inspection check and why it matters."},
+   {id:'w2s3', title:'대응 가능한 패키지 설명', icon:'chip', persona:{name:'Mark Peterson', init:'MP', title:'Operations Director', org:'fabless startup building a packaging line in Texas', voice:'buttery'},
+    situation:"You ask which package types MSVP can handle (BGA, QFN, large substrates) and whether one system can run several products.",
+    goal_ko:'BGA·QFN·FC-BGA 기판 등 적용 범위 설명', goal_en:"Describe which packages and substrates MSVP can process."},
+ ]},
+ {w:3, theme:'데모·FAT 일정 잡기', grammar:'미래 표현 (will / be going to / be -ing) · 시간 전치사 (by / until / on / at / in)',
+  expr:["Would next Tuesday work for you?","We'll have the machine ready by the 15th.","The FAT is scheduled for the week of ___.","Let me check my calendar and get back to you."],
+  scen:[
+   {id:'w3s1', title:'데모 일정 조율', icon:'calendar', persona:{name:'Kevin Huang', init:'KH', title:'Deputy Director, Process Engineering', org:'FC-BGA substrate maker in Taoyuan, Taiwan', voice:'buttery'},
+    situation:"You want a sample-cutting demo using your own substrates. You are busy; propose dates that conflict at first. Ask about time zones and what samples to send.",
+    goal_ko:'데모 날짜·시간대 확정, 샘플 발송 조건 안내', goal_en:"Agree on a demo date and explain what samples to send."},
+   {id:'w3s2', title:'FAT 일정과 참석자 확정', icon:'factory', persona:{name:'Lisa Tan', init:'LT', title:'Project Manager', org:'OSAT in Singapore', voice:'airy'},
+    situation:"Your company ordered two MSVP units. You need to plan the FAT at Hanmi's factory in Incheon: dates, who attends, what will be tested, visa/hotel help.",
+    goal_ko:'FAT 날짜, 참석 인원, 검사 항목 정리', goal_en:"Fix the FAT schedule, attendees and test items."},
+   {id:'w3s3', title:'설치 일정 변경 요청', icon:'clock', persona:{name:'Daniel Lim', init:'DL', title:'Procurement Manager', org:'OSAT in Penang, Malaysia', voice:'rounded'},
+    situation:"Your cleanroom construction is delayed by about four weeks, so you need to postpone shipment and installation. You worry about extra storage costs.",
+    goal_ko:'변경 요청 수용, 새 일정·보관 조건 협의', goal_en:"Handle the reschedule and agree on new dates and storage."},
+ ]},
+ {w:4, theme:'숫자·단위 확인과 되묻기', grammar:'의문문 · 되묻기 · 숫자/단위 읽기 (micron, UPH, percent)',
+  expr:["Sorry, could you say that again?","Just to confirm, you said fifteen, one-five?","Let me read that back to you.","Do you mean per hour or per shift?"],
+  scen:[
+   {id:'w4s1', title:'잡음 많은 통화에서 숫자 확인', icon:'signal', persona:{name:'Wang Lei', init:'WL', title:'Purchasing Supervisor', org:'OSAT in Suzhou, China', voice:'rounded'},
+    situation:"The line is bad. You give many numbers quickly (quantities, dates, micron tolerances, UPH targets, phone numbers). Sometimes say 'fifteen' vs 'fifty' ambiguously so the learner must confirm.",
+    goal_ko:'숫자·단위를 되묻고 복창해서 정확히 확인', goal_en:"Confirm every number and unit by asking and reading back."},
+   {id:'w4s2', title:'RFQ 세부 조건 확인', icon:'doc', persona:{name:'Rajesh Kumar', init:'RK', title:'Process Engineer', org:'OSAT in Penang, Malaysia', voice:'rounded'},
+    situation:"You sent an RFQ email with missing details. The learner must ask about package size, strip/panel size, material, target UPH, quantity and required delivery.",
+    goal_ko:'견적에 필요한 정보 질문하기', goal_en:"Ask the right questions to complete the RFQ."},
+   {id:'w4s3', title:'상사 부재 중 메시지 받기', icon:'note', persona:{name:'Hans Becker', init:'HB', title:'Plant Manager', org:'automotive electronics maker in Dresden, Germany', voice:'buttery'},
+    situation:"You want to speak to the learner's manager, who is out. Leave a detailed message with a callback time in your time zone and a technical question.",
+    goal_ko:'메시지 받아 적고 복창, 회신 약속', goal_en:"Take a detailed message, read it back and promise a callback."},
+ ]},
+ {w:5, theme:'스펙 비교와 강점 설명', grammar:'비교급·최상급 · 완곡한 표현 (tend to, about, in most cases)',
+  expr:["Compared to a separate saw and handler, ___.","One of the key advantages is ___.","It helps reduce setup time significantly.","I'd rather not comment on other vendors, but ___."],
+  scen:[
+   {id:'w5s1', title:'일본 경쟁사 장비와 비교 질문', icon:'compare', persona:{name:'Kenji Watanabe', init:'KW', title:'Senior Equipment Engineer', org:'IDM packaging line in Kumamoto, Japan', voice:'rounded'},
+    situation:"You have used a Japanese saw for years and are skeptical. Ask why you should consider MSVP. Push on reliability and track record.",
+    goal_ko:'경쟁사 비방 없이 통합 시스템·자동화 강점 설명', goal_en:"Explain MSVP's strengths professionally without criticizing competitors."},
+   {id:'w5s2', title:'인력 부족 고민 → 자동화 기능', icon:'robot', persona:{name:'Lisa Tan', init:'LT', title:'Project Manager', org:'OSAT in Singapore', voice:'airy'},
+    situation:"Your problem is a shortage of skilled engineers and long product changeover. Ask about automatic blade change, kit change and automatic setup.",
+    goal_ko:'Blade Change Master·Auto Kit Change·FSD 효과 설명', goal_en:"Link the automation features to her labor and setup-time problem."},
+   {id:'w5s3', title:'대면적 FC-BGA 기판 절단 우려', icon:'chip', persona:{name:'Kevin Huang', init:'KH', title:'Deputy Director, Process Engineering', org:'FC-BGA substrate maker in Taoyuan, Taiwan', voice:'buttery'},
+    situation:"Your AI-server substrates are getting larger. You worry about warpage, cut position accuracy and chipping on big panels.",
+    goal_ko:'대면적 기판의 정밀도·뒤틀림 대응 설명, 데모 제안', goal_en:"Address his precision and warpage concerns and offer a test."},
+ ]},
+ {w:6, theme:'견적과 거래 조건', grammar:'1형 조건문 (If you order ~, we can ~) · 금액·조건 말하기',
+  expr:["The quotation includes ___.","The price is based on FOB Incheon.","If you confirm the order by ___, we can ___.","Our standard payment terms are ___."],
+  scen:[
+   {id:'w6s1', title:'견적서 내용 설명', icon:'doc', persona:{name:'Emily Carter', init:'EC', title:'Junior Buyer', org:'US OSAT in Arizona', voice:'airy'},
+    situation:"You received the quotation and don't understand some terms (Incoterms, options, payment terms, validity). Ask about each.",
+    goal_ko:'견적 구성·인코텀즈·지불 조건·유효기간 설명', goal_en:"Walk her through the quotation terms clearly."},
+   {id:'w6s2', title:'보증·부품·서비스 문의', icon:'shield', persona:{name:'Hans Becker', init:'HB', title:'Plant Manager', org:'automotive electronics maker in Dresden, Germany', voice:'buttery'},
+    situation:"You care about warranty length, spare-parts availability in Europe, response time of service engineers and training.",
+    goal_ko:'보증, 스페어 파츠, CS 대응 체계 설명', goal_en:"Explain warranty, spare parts and service support."},
+   {id:'w6s3', title:'복수 대수 주문과 분할 납품', icon:'boxes', persona:{name:'Wang Lei', init:'WL', title:'Purchasing Supervisor', org:'OSAT in Suzhou, China', voice:'rounded'},
+    situation:"You may order five units but want them delivered in two lots and ask what conditions change for a larger order.",
+    goal_ko:'분할 납품 일정, 대량 주문 조건 협의', goal_en:"Discuss split delivery and conditions for a multi-unit order."},
+ ]},
+ {w:7, theme:'납기와 지연 대응', grammar:'현재완료 (has been delayed) · 사과와 원인 설명 · 대안 제시',
+  expr:["I'm afraid there has been a delay in ___.","This is due to ___.","To minimize the impact, we can ___.","I apologize for the inconvenience."],
+  scen:[
+   {id:'w7s1', title:'리드타임 설명', icon:'clock', persona:{name:'Mark Peterson', init:'MP', title:'Operations Director', org:'fabless startup building a packaging line in Texas', voice:'buttery'},
+    situation:"You need equipment as fast as possible for a customer ramp. Ask what determines lead time and how to shorten it.",
+    goal_ko:'리드타임 구성(제작·FAT·운송·설치)과 단축 방안 설명', goal_en:"Explain what drives lead time and options to shorten it."},
+   {id:'w7s2', title:'출하 지연 통보', icon:'alert', persona:{name:'Daniel Lim', init:'DL', title:'Procurement Manager', org:'OSAT in Penang, Malaysia', voice:'rounded'},
+    situation:"The learner must tell you shipment is delayed about three weeks because of a component shortage. You are unhappy because your production plan depends on it.",
+    goal_ko:'지연 사실·원인 전달, 사과, 대안 제시', goal_en:"Deliver the bad news, explain why, apologize and offer alternatives."},
+   {id:'w7s3', title:'스페어 파츠 지연 항의', icon:'wrench', persona:{name:'Nguyen Thi Mai', init:'NM', title:'Equipment Engineer', org:'assembly plant in Bac Ninh, Vietnam', voice:'airy'},
+    situation:"A spare part you ordered two weeks ago has not arrived and one machine is down. You are frustrated.",
+    goal_ko:'공감 → 상황 확인 → 즉시 조치 약속', goal_en:"Calm her down, check the status and commit to concrete action."},
+ ]},
+ {w:8, theme:'기술 이슈 대응', grammar:'조동사로 제안·추측 (should, could, might, must have) · 원인-결과',
+  expr:["It might be caused by ___.","Could you check whether ___?","I'd recommend ___ first.","We can send a CS engineer to your site."],
+  scen:[
+   {id:'w8s1', title:'블레이드 교체 후 치핑 증가', icon:'saw', persona:{name:'Rajesh Kumar', init:'RK', title:'Process Engineer', org:'OSAT in Penang, Malaysia', voice:'rounded'},
+    situation:"After changing to a new blade lot, back-side chipping increased on QFN strips. Answer the learner's diagnostic questions realistically (blade spec, dressing, feed rate, coolant).",
+    goal_ko:'원인 후보 질문 → 점검 요청 → 후속 조치 합의', goal_en:"Ask diagnostic questions, suggest checks and agree on next steps."},
+   {id:'w8s2', title:'비전 과검출(overkill) 문제', icon:'eye', persona:{name:'Wang Lei', init:'WL', title:'Purchasing Supervisor', org:'OSAT in Suzhou, China', voice:'rounded'},
+    situation:"Your production team says the vision system rejects too many good units after a product change. You are not technical; you want to know what will be done.",
+    goal_ko:'과검출 개념 설명, 레시피 조정·원격 지원 제안', goal_en:"Explain overkill simply and propose recipe tuning or support."},
+   {id:'w8s3', title:'UPH가 기대보다 낮음', icon:'gauge', persona:{name:'Mark Peterson', init:'MP', title:'Operations Director', org:'fabless startup building a packaging line in Texas', voice:'buttery'},
+    situation:"UPH is lower than what you expected from the demo. You suspect the machine. The real causes may be recipe, product mix or operator handling.",
+    goal_ko:'조건 차이 확인, 원인 분석 계획, 엔지니어 방문 제안', goal_en:"Investigate the gap politely and plan an engineer visit."},
+ ]},
+ {w:9, theme:'가격 협상', grammar:'가정법 (If we were to ~, we would ~) · 정중한 거절 · 조건부 양보',
+  expr:["I understand your budget situation.","That would be difficult for us, but ___.","If you could ___, we might be able to ___.","Let's look at the total cost of ownership."],
+  scen:[
+   {id:'w9s1', title:'15% 할인 요구', icon:'tag', persona:{name:'Sophia Chen', init:'SC', title:'Strategic Sourcing Manager', org:'major OSAT in Kaohsiung, Taiwan', voice:'airy'},
+    situation:"You are a tough negotiator. Demand a 15% discount, use silence and pressure, and only move if the learner trades something (volume, payment terms, delivery).",
+    goal_ko:'즉답 피하기 → 조건 교환 → 합의 또는 보류', goal_en:"Avoid giving in, trade concessions and close or park the issue."},
+   {id:'w9s2', title:'경쟁사 저가 제안 방어', icon:'compare', persona:{name:'Kenji Watanabe', init:'KW', title:'Senior Equipment Engineer', org:'IDM packaging line in Kumamoto, Japan', voice:'rounded'},
+    situation:"Another vendor offered a lower price. Ask why you should pay more. Respond to arguments about uptime, setup time and integrated system.",
+    goal_ko:'가격 대신 가치(TCO·가동률·셋업 시간)로 설득', goal_en:"Defend value with total cost of ownership, not price."},
+   {id:'w9s3', title:'지불 조건·납기 동시 협상', icon:'handshake', persona:{name:'Daniel Lim', init:'DL', title:'Procurement Manager', org:'OSAT in Penang, Malaysia', voice:'rounded'},
+    situation:"You want a lower down payment and earlier delivery at the same time. Be reasonable but firm.",
+    goal_ko:'여러 조건을 묶어 윈윈 제안', goal_en:"Package several terms into a balanced proposal."},
+ ]},
+ {w:10, theme:'클레임과 에스컬레이션', grammar:'간접화법 (He said that ~) · 공감 표현 · 책임 있는 약속',
+  expr:["I completely understand your frustration.","Our engineer said that ___.","I'll escalate this to our management today.","You'll hear from me by ___."],
+  scen:[
+   {id:'w10s1', title:'장비 다운타임 공식 클레임', icon:'alert', persona:{name:'Hans Becker', init:'HB', title:'Plant Manager', org:'automotive electronics maker in Dresden, Germany', voice:'buttery'},
+    situation:"A machine was down for two days last week. You are formally complaining and want a root-cause report and compensation.",
+    goal_ko:'공감 → 사실 확인 → 보고서·조치 일정 약속', goal_en:"Acknowledge, confirm facts and commit to a report and actions."},
+   {id:'w10s2', title:'본사 엔지니어 의견 전달', icon:'chat', persona:{name:'Sophia Chen', init:'SC', title:'Strategic Sourcing Manager', org:'major OSAT in Kaohsiung, Taiwan', voice:'airy'},
+    situation:"You ask what Hanmi's HQ engineers concluded about last month's issue. The learner must report it using reported speech.",
+    goal_ko:'간접화법으로 본사 의견 정확히 전달', goal_en:"Report HQ's conclusions accurately using reported speech."},
+   {id:'w10s3', title:'업체 변경 위협', icon:'door', persona:{name:'Wang Lei', init:'WL', title:'Purchasing Supervisor', org:'OSAT in Suzhou, China', voice:'rounded'},
+    situation:"You hint that you may switch vendors for the next expansion because of recent service issues.",
+    goal_ko:'관계 회복, 개선 계획 제시, 다음 기회 확보', goal_en:"Rebuild trust with a concrete improvement plan."},
+ ]},
+ {w:11, theme:'신규 수요와 가치 제안', grammar:'설득 표현 · 근거 제시 · 스몰토크',
+  expr:["With the growth of AI servers, ___.","This could help you ___.","Based on what you've told me, I'd suggest ___.","How's business been on your side?"],
+  scen:[
+   {id:'w11s1', title:'AI 서버 기판 증설 고객 제안', icon:'rocket', persona:{name:'Kevin Huang', init:'KH', title:'Deputy Director, Process Engineering', org:'FC-BGA substrate maker in Taoyuan, Taiwan', voice:'buttery'},
+    situation:"Your company is planning a large FC-BGA capacity expansion for AI servers. You are comparing equipment options.",
+    goal_ko:'고객 증설 계획에 맞춘 MSVP 가치 제안', goal_en:"Tailor a value proposition to his expansion plan."},
+   {id:'w11s2', title:'신규 응용분야 고객', icon:'lens', persona:{name:'Anna Kowalski', init:'AK', title:'Engineering Manager', org:'optical module maker in Penang, Malaysia', voice:'airy'},
+    situation:"You cut glass lenses and filters and wonder whether Hanmi has a suitable saw. Ask about the micro SAW lineup.",
+    goal_ko:'micro SAW 라인업 소개, 적합 모델 확인 질문', goal_en:"Introduce the lineup and ask questions to find the right fit."},
+   {id:'w11s3', title:'오랜 고객과 관계 통화', icon:'coffee', persona:{name:'Mark Peterson', init:'MP', title:'Operations Director', org:'fabless startup building a packaging line in Texas', voice:'buttery'},
+    situation:"A relaxed relationship call. Chat about industry trends (AI, HBM, capex), family, travel, then naturally ask about upcoming plans.",
+    goal_ko:'자연스러운 스몰토크 → 영업 정보 얻기', goal_en:"Make natural small talk and smoothly gather sales information."},
+ ]},
+ {w:12, theme:'종합 실전 평가', grammar:'지금까지 배운 모든 표현 · 최소 힌트',
+  expr:["To summarize our discussion, ___.","As a next step, I'll ___.","Is there anything else I can help you with?","Thank you for your time today."],
+  scen:[
+   {id:'w12s1', title:'영업 전 과정 통화', icon:'flag', persona:{name:'Sophia Chen', init:'SC', title:'Strategic Sourcing Manager', org:'major OSAT in Kaohsiung, Taiwan', voice:'airy'},
+    situation:"A complete sales call: introduction, needs, technical questions, commercial terms and next steps. Act as a demanding but fair customer.",
+    goal_ko:'도입부터 다음 단계 합의까지 혼자 리드', goal_en:"Lead the whole call from introduction to agreed next steps."},
+   {id:'w12s2', title:'빠르게 말하는 까다로운 바이어', icon:'bolt', persona:{name:'Brian O\'Neill', init:'BO', title:'VP of Operations', org:'US OSAT in Arizona', voice:'glassy'},
+    situation:"You speak fast, interrupt, use idioms and change topics. Test whether the learner can keep control and clarify.",
+    goal_ko:'끼어들기·빠른 말에도 침착하게 확인하며 대화 주도', goal_en:"Stay calm, clarify and keep control of the conversation."},
+   {id:'w12s3', title:'최종 영어 평가 인터뷰', icon:'medal', persona:{name:'Claire Morgan', init:'CM', title:'Business English Assessor', org:'corporate language assessment team', voice:'airy'},
+    situation:"You are a friendly business-English assessor. Interview the learner about their job, their products (MSVP), a difficult customer case, and their goals. Ask follow-up questions that require explanation and opinion.",
+    goal_ko:'업무·제품·경험을 길게 설명하는 최종 평가', goal_en:"Speak at length about your job, products and experiences."},
+ ]},
+];
+const ALL_SCEN = WEEKS.flatMap(w => w.scen.map(s => ({...s, week:w.w})));
+
+function phaseOf(week){ return week<=4?1:week<=8?2:3; }
+const PHASE_RULES = {
+ 1: `LEVEL: Phase 1 (weeks 1-4), learner is intermediate (about CEFR B1).
+- Your lines: 1-2 short sentences, max ~22 words. Common words; domain terms are fine but rephrase if the learner seems lost.
+- Correct EVERY clear grammar/vocabulary error in the learner's last utterance (pick the single most important one if several; mention the others in "better").
+- Always give a helpful hint.`,
+ 2: `LEVEL: Phase 2 (weeks 5-8), learner is around B1+.
+- Your lines: 1-3 sentences, max ~32 words, natural business English.
+- Correct errors that affect meaning or sound unprofessional. For correct but awkward sentences, give a more professional version in "better".
+- Hints: give them, but slightly less complete (a starter phrase).`,
+ 3: `LEVEL: Phase 3 (weeks 9-12), learner is B1+ to B2.
+- Your lines: natural speed and length (max ~40 words), idioms allowed, push back and negotiate like a real customer.
+- Inline: correct only significant errors (meaning, tense, professionalism). Ignore small slips here (they will be reviewed in the report).
+- Hints: only a short starter phrase.`,
+};
+
+/* ---------------------------- STATE ---------------------------- */
+const DEFAULT_STATE = () => ({
+  v:1,
+  startDate: todayStr(),
+  weekOverride: null,
+  settings:{
+    apiKey:'', model:'claude-haiku-5-5', tier:'default',
+    ttsEngine:'auto', ttsRate:1.0, autoListen:true, autoSend:true,
+    showCorrections:true, autoKo:false, weeklyGoal:5,
+  },
+  notebook:[],      // {id, original, corrected, explanation_ko, category, count, firstSeen, lastSeen, mastered}
+  expressions:[],   // {en, ko, added}
+  sessions:[],      // compact summaries
+  done:{},          // scenarioId -> count
+  usage:{},         // 'YYYY-MM' -> {in, out, usd}
+});
+let S = DEFAULT_STATE();
+const RT = { screen:'home', tab:'home', call:null, report:null, caps:{}, uid:null, dbReady:false, toastT:null, nbTab:'mistakes' };
+const LS_KEY = 'fabtalk.v1';
+const LS_KEY_API = 'fabtalk.apikey';
+
+function todayStr(d=new Date()){ const z=n=>String(n).padStart(2,'0'); return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate()); }
+function monthStr(d=new Date()){ return todayStr(d).slice(0,7); }
+function daysBetween(a,b){ return Math.floor((new Date(b+'T00:00:00') - new Date(a+'T00:00:00'))/86400000); }
+function currentWeek(){
+  if (S.weekOverride) return S.weekOverride;
+  const d = daysBetween(S.startDate, todayStr());
+  return Math.min(12, Math.max(1, Math.floor(d/7)+1));
+}
+function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,7); }
+function esc(s){ return String(s??'').replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function norm(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9' ]+/g,' ').replace(/\s+/g,' ').trim(); }
+
+/* ---------------------------- STORAGE ---------------------------- */
+const Store = {
+  saveT:null, saving:false, pending:false,
+  lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+  lsSet(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } },
+  loadLocal(){
+    const raw = this.lsGet(LS_KEY);
+    if (raw){ try{ S = migrate(JSON.parse(raw)); }catch(e){} }
+    const key = this.lsGet(LS_KEY_API);
+    if (key) S.settings.apiKey = key;
+  },
+  async load(){
+    const fromLS = S;
+    let fromDB = null;
+    if (RT.caps.db && RT.uid){
+      try{
+        const snap = await withTimeout(RT.caps.db.doc(`data/users/${RT.uid}/state`).get(), 10000);
+        if (snap && snap.exists){
+          fromDB = JSON.parse(JSON.stringify(snap.data()));
+          // sessions are kept in monthly docs
+          const col = await withTimeout(RT.caps.db.collection(`data/users/${RT.uid}`).get(), 10000);
+          const sessions = [];
+          col.docs.forEach(d=>{ if (d.id.startsWith('sessions_')){ const b=d.data(); if (b && Array.isArray(b.items)) sessions.push(...b.items); } });
+          fromDB.sessions = sessions.sort((a,b)=>a.ts-b.ts);
+        }
+        RT.dbReady = true;
+      }catch(e){ console.warn('db load failed', e); RT.dbReady = false; }
+    }
+    // keep whichever copy is newer (device vs. Claude account)
+    if (fromDB && (fromDB.updatedAt||0) >= (fromLS.updatedAt||0)){
+      const key = S.settings.apiKey;
+      S = migrate(fromDB); S.settings.apiKey = key;
+    } else if (RT.dbReady && (fromLS.updatedAt||0) > 0){
+      this.flushDB(); // device copy is newer: push it up
+    }
+  },
+  save(){
+    S.updatedAt = Date.now();
+    this.lsSet(LS_KEY, JSON.stringify({...S, settings:{...S.settings, apiKey:''}}));
+    this.lsSet(LS_KEY_API, S.settings.apiKey||'');
+    if (RT.caps.db && RT.uid && RT.dbReady){
+      clearTimeout(this.saveT);
+      this.saveT = setTimeout(()=>this.flushDB(), 400);
+    }
+  },
+  flushNow(){ if (this.saveT){ clearTimeout(this.saveT); this.saveT=null; this.flushDB(); } },
+  async flushDB(){
+    this.saveT = null;
+    if (this.saving){ this.pending = true; return; }
+    this.saving = true;
+    try{
+      const {sessions, ...rest} = S;
+      const body = JSON.parse(JSON.stringify({...rest, settings:{...rest.settings, apiKey:''}}));
+      await RT.caps.db.doc(`data/users/${RT.uid}/state`).set(body);
+      const byMonth = {};
+      sessions.forEach(s=>{ const m = s.date.slice(0,7); (byMonth[m] ||= []).push(s); });
+      for (const m of Object.keys(byMonth)){
+        const items = byMonth[m];
+        const sig = items.length+':'+(items[items.length-1]?.id||'');
+        if (this._sig?.[m] === sig) continue;
+        await RT.caps.db.doc(`data/users/${RT.uid}/sessions_${m}`).set({items});
+        (this._sig ||= {})[m] = sig;
+      }
+    }catch(e){ console.warn('db save failed', e); if (e && e.code==='quota_exceeded') toast('클라우드 저장 공간이 가득 찼어요. 기기에는 저장됩니다.'); }
+    this.saving = false;
+    if (this.pending){ this.pending = false; this.flushDB(); }
+  },
+};
+function migrate(o){
+  const base = DEFAULT_STATE();
+  const out = {...base, ...o, settings:{...base.settings, ...(o.settings||{})}};
+  ['notebook','expressions','sessions'].forEach(k=>{ if(!Array.isArray(out[k])) out[k]=[]; });
+  if (typeof out.done!=='object'||!out.done) out.done={};
+  if (typeof out.usage!=='object'||!out.usage) out.usage={};
+  return out;
+}
+function withTimeout(p, ms){ return Promise.race([p, new Promise((_,rej)=>setTimeout(()=>rej({code:'timeout'}), ms))]); }
+
+/* ---------------------------- CAPABILITIES ---------------------------- */
+async function initCaps(){
+  const has = () => typeof window.claude === 'object' && window.claude && typeof window.claude.use === 'function';
+  for (let i=0; i<4 && !has(); i++) await sleep(250);
+  if (!has()) return;
+  RT.inArtifact = true;
+  const get = async n => { try{ return await withTimeout(window.claude.use(n), 10000); }catch(e){ return null; } };
+  const [sample, dictation, tts, db, user] = await Promise.all(['sample','dictation','tts','db','user'].map(get));
+  RT.caps = {sample, dictation, tts, db, user};
+  RT.inArtifact = true;
+  if (user && db){ try{ RT.uid = await user.id(); }catch(e){ RT.uid = null; } }
+  if (dictation) wireDictation(dictation);
+  if (tts && typeof tts.onState==='function'){ tts.onState(({state})=>{ RT.ttsState = state; }); }
+}
+function aiMode(){ return RT.caps.sample ? 'claude' : (S.settings.apiKey ? 'api' : 'none'); }
+
+/* ---------------------------- AI LAYER ---------------------------- */
+const TURN_SCHEMA = {
+  type:'object',
+  properties:{
+    reply:{type:'string', description:'What you (the customer persona) say next, in natural spoken English. No stage directions, no emojis, no Korean.'},
+    reply_ko:{type:'string', description:'Natural Korean translation of reply.'},
+    has_error:{type:'boolean', description:'true only if the learner\'s LAST utterance contains a real error worth correcting at this level.'},
+    original:{type:'string', description:'The exact erroneous phrase/sentence from the learner (short). Empty string if has_error is false.'},
+    corrected:{type:'string', description:'Corrected version. Empty string if has_error is false.'},
+    category:{type:'string', enum:['grammar','tense','preposition','article','vocabulary','word_order','expression','none']},
+    explanation_ko:{type:'string', description:'One short Korean sentence explaining the rule (반말 X, ~요 체). Empty if no error.'},
+    better:{type:'string', description:'Optional: a more natural/professional way to say the learner\'s last line (English). Empty string if not needed.'},
+    hint_en:{type:'string', description:'A model sentence the learner could say next to move toward the goal.'},
+    hint_ko:{type:'string', description:'Korean meaning of hint_en.'},
+    end_call:{type:'boolean', description:'true only when the conversation has naturally concluded and you said goodbye.'},
+  },
+  required:['reply','reply_ko','has_error','original','corrected','category','explanation_ko','better','hint_en','hint_ko','end_call'],
+};
+const REPORT_SCHEMA = {
+  type:'object',
+  properties:{
+    grammar:{type:'integer', minimum:0, maximum:100},
+    vocabulary:{type:'integer', minimum:0, maximum:100},
+    fluency:{type:'integer', minimum:0, maximum:100},
+    task:{type:'integer', minimum:0, maximum:100, description:'How well the learner achieved the call goal.'},
+    cefr:{type:'string', description:'Estimated CEFR level for this call, e.g. B1, B1+, B2.'},
+    summary_ko:{type:'string', description:'2-3 Korean sentences: overall feedback.'},
+    strengths_ko:{type:'array', items:{type:'string'}, maxItems:3},
+    improve_ko:{type:'array', items:{type:'string'}, maxItems:3},
+    extra_corrections:{type:'array', maxItems:5, description:'Errors NOT already listed in the live corrections.', items:{type:'object', properties:{original:{type:'string'}, corrected:{type:'string'}, explanation_ko:{type:'string'}}, required:['original','corrected','explanation_ko']}},
+    key_expressions:{type:'array', maxItems:5, description:'Useful sales/technical expressions for this situation the learner should memorize.', items:{type:'object', properties:{en:{type:'string'}, ko:{type:'string'}}, required:['en','ko']}},
+    next_focus_ko:{type:'string', description:'One concrete Korean sentence: what to practice next time.'},
+  },
+  required:['grammar','vocabulary','fluency','task','cefr','summary_ko','strengths_ko','improve_ko','extra_corrections','key_expressions','next_focus_ko'],
+};
+
+const PRICES = { haiku:{in:0.10,out:0.50}, sonnet:{in:2,out:10}, opus:{in:4,out:20} }; // USD per 1M tokens (estimate, Oct 2026)
+function priceFor(model){ const m = model.toLowerCase(); return m.includes('haiku')?PRICES.haiku:m.includes('opus')?PRICES.opus:PRICES.sonnet; }
+function addUsage(u){
+  if (!u) return;
+  const p = priceFor(S.settings.model);
+  const inTok = (u.input_tokens||0)+(u.cache_read_input_tokens||0)+(u.cache_creation_input_tokens||0);
+  const outTok = u.output_tokens||0;
+  const m = monthStr();
+  const cur = S.usage[m] || {in:0,out:0,usd:0};
+  cur.in += inTok; cur.out += outTok; cur.usd += (inTok*p.in + outTok*p.out)/1e6;
+  S.usage[m] = cur;
+}
+
+class AIError extends Error { constructor(code, msg){ super(msg); this.code = code; } }
+
+async function aiJSON({system, messages, schema, name, maxTokens=700, signal}){
+  const mode = aiMode();
+  if (mode === 'none') throw new AIError('no_key', 'AI 연결이 필요해요. 설정에서 API 키를 입력하세요.');
+  if (mode === 'claude') return sampleJSON({system, messages, schema, signal});
+  return apiJSON({system, messages, schema, name, maxTokens, signal});
+}
+
+async function apiJSON({system, messages, schema, name, maxTokens, signal}, attempt=0){
+  const ctrl = new AbortController();
+  const t = setTimeout(()=>ctrl.abort(), 45000);
+  if (signal) signal.addEventListener('abort', ()=>ctrl.abort(), {once:true});
+  let res;
+  try{
+    res = await fetch('https://api.anthropic.com/v1/messages', {
+      method:'POST', signal: ctrl.signal,
+      headers:{
+        'content-type':'application/json',
+        'x-api-key': S.settings.apiKey.trim(),
+        'anthropic-version':'2023-06-01',
+        'anthropic-dangerous-direct-browser-access':'true',
+      },
+      body: JSON.stringify({
+        model: S.settings.model, max_tokens: maxTokens,
+        system: [{type:'text', text: system, cache_control:{type:'ephemeral'}}],
+        messages,
+        tools:[{name, description:'Return your answer in this structure.', input_schema: schema}],
+        tool_choice:{type:'tool', name},
+      }),
+    });
+  }catch(e){
+    clearTimeout(t);
+    if (signal && signal.aborted) throw new AIError('aborted','취소됨');
+    if (attempt < 1) { await sleep(1200); return apiJSON({system, messages, schema, name, maxTokens, signal}, attempt+1); }
+    throw new AIError('network', '네트워크 연결을 확인해 주세요.');
+  }
+  clearTimeout(t);
+  let body = null; try{ body = await res.json(); }catch(e){}
+  if (!res.ok){
+    const msg = body?.error?.message || '';
+    if (res.status===401) throw new AIError('auth','API 키가 올바르지 않아요. 설정에서 다시 확인해 주세요.');
+    if (res.status===403) throw new AIError('perm','이 API 키로는 사용할 수 없어요 (권한).');
+    if (res.status===404) throw new AIError('model',`모델 이름(${S.settings.model})을 찾을 수 없어요. 설정에서 모델을 바꿔 보세요.`);
+    if (res.status===400 && /credit/i.test(msg)) throw new AIError('credit','API 크레딧이 부족해요. Claude Console에서 충전해 주세요.');
+    if ((res.status===429 || res.status===529 || res.status>=500) && attempt < 2){ await sleep(1500*(attempt+1)); return apiJSON({system, messages, schema, name, maxTokens, signal}, attempt+1); }
+    if (res.status===429) throw new AIError('rate','요청이 너무 많아요. 잠시 후 다시 시도해 주세요.');
+    throw new AIError('api', `AI 응답 오류 (${res.status}) ${msg.slice(0,120)}`);
+  }
+  addUsage(body.usage);
+  const tu = (body.content||[]).find(c=>c.type==='tool_use');
+  if (!tu) throw new AIError('format','AI 응답 형식이 올바르지 않아요. 다시 시도해 주세요.');
+  return tu.input;
+}
+
+async function sampleJSON({system, messages, schema, signal}){
+  const sample = RT.caps.sample;
+  const instr = `${system}\n\n=== OUTPUT FORMAT ===\nRespond with ONLY one JSON object (no markdown, no prose) that matches this JSON Schema:\n${JSON.stringify(schema)}`;
+  const input = messages.map((m,i)=> i===0 ? {role:'user', content: instr + '\n\n=== CONVERSATION START ===\n' + m.content} : m);
+  const opts = {cache:false, modelTier: S.settings.tier==='quick'?'quick':'default'};
+  if (signal) opts.signal = signal;
+  try{
+    if (typeof sample.json === 'function'){
+      const v = await sample.json(input, opts);
+      const obj = typeof v==='string' ? parseLooseJSON(v) : v;
+      if (obj && typeof obj==='object') return obj;
+    }
+    const r = await sample(input, opts);
+    const obj = parseLooseJSON(r && r.text);
+    if (!obj) throw new AIError('format','AI 응답 형식이 올바르지 않아요.');
+    return obj;
+  }catch(e){
+    if (e instanceof AIError) throw e;
+    const c = e && e.code;
+    if (c==='not_granted') throw new AIError('not_granted','Claude 사용 권한이 꺼져 있어요. 페이지를 다시 열어 허용해 주세요.');
+    if (c==='rate_limited') throw new AIError('rate','Claude 사용량 한도에 도달했어요. 잠시 후 다시 시도해 주세요.');
+    if (signal && signal.aborted) throw new AIError('aborted','취소됨');
+    throw new AIError('sample', 'Claude 응답 오류: '+(e && e.message ? e.message : '알 수 없음'));
+  }
+}
+function parseLooseJSON(t){
+  if (!t) return null;
+  try{ return JSON.parse(t); }catch(e){}
+  const a = t.indexOf('{'), b = t.lastIndexOf('}');
+  if (a>=0 && b>a){ try{ return JSON.parse(t.slice(a,b+1)); }catch(e){} }
+  return null;
+}
+const sleep = ms => new Promise(r=>setTimeout(r,ms));
+
+function sanitizeTurn(o){
+  const s = v => typeof v==='string' ? v.trim() : '';
+  const out = {
+    reply: s(o.reply), reply_ko: s(o.reply_ko),
+    has_error: o.has_error===true, original: s(o.original), corrected: s(o.corrected),
+    category: s(o.category)||'none', explanation_ko: s(o.explanation_ko),
+    better: s(o.better), hint_en: s(o.hint_en), hint_ko: s(o.hint_ko), end_call: o.end_call===true,
+  };
+  if (!out.original || !out.corrected || norm(out.original)===norm(out.corrected)) out.has_error = false;
+  if (out.better && norm(out.better)===norm(out.corrected)) out.better = '';
+  if (!out.reply) throw new AIError('format','AI가 빈 응답을 보냈어요. 다시 시도해 주세요.');
+  return out;
+}
+
+/* ---------------------------- PROMPTS ---------------------------- */
+function buildSystem(sc){
+  const week = sc.week || currentWeek();
+  const ph = phaseOf(week);
+  const wk = WEEKS[week-1];
+  const p = sc.persona;
+  let extra = '';
+  if (sc.kind==='review'){
+    extra = `\nREVIEW FOCUS: This is a review call. Naturally create situations where the learner must use these previously corrected expressions (don't tell them the list):\n${sc.reviewItems.map(x=>'- '+x.corrected+'  (they used to say: "'+x.original+'")').join('\n')}\nIf they now use the correct form, briefly praise it inside "better" is NOT needed; just continue.`;
+  }
+  return `You are a role-play partner AND a hidden English coach for a phone-English lesson.
+
+LEARNER: A Korean domestic sales representative at Hanmi Semiconductor (a Korean semiconductor back-end equipment maker). Their products: micro SAW & VISION PLACEMENT (MSVP). They are intermediate (about CEFR B1) and want to handle overseas customers by phone confidently within 3 months. Their speech comes from speech recognition, so ignore missing punctuation/capitalization and obvious recognition glitches (e.g. "hammy" = "Hanmi", "micro saw", "vision placement", "you pH" = "UPH"); never correct those.
+
+YOUR ROLE: ${p.name}, ${p.title} at a ${p.org}. You are knowledgeable about semiconductor packaging and sawing/inspection equipment and react like a real industry professional (ask sharp, realistic questions, use correct terminology).
+SITUATION: ${sc.situation}
+LEARNER'S GOAL (for you to evaluate, don't announce it): ${sc.goal_en}
+WEEK ${week} THEME: ${wk ? wk.theme+' / grammar focus: '+wk.grammar : 'free practice'}
+${PHASE_RULES[ph]}
+${extra}
+
+CONVERSATION RULES
+- This is a PHONE CALL: speak naturally, one question or point at a time, no lists, no markdown, no emojis, no stage directions.
+- Stay in character. Never mention you are an AI or a coach in "reply".
+- Keep the conversation moving toward the goal; if the learner is stuck or silent, help naturally (rephrase, ask a simpler question).
+- If the learner speaks Korean, reply in English in character and put a gentle English version of what they meant in "better".
+- If the learner says "[END CALL]" or clearly wants to finish, close politely and set end_call=true.
+- Do not invent Hanmi prices, delivery dates or spec numbers as facts. As the customer, ask for them.
+
+CORRECTION RULES (fields has_error/original/corrected/explanation_ko/better)
+- Only evaluate the learner's LAST utterance. For the very first turn (call connected) there is nothing to correct.
+- Prefer real errors: tense, prepositions (by/until/on/at), articles, plurals, subject-verb agreement, word order, Konglish (e.g. "feedback to you" -> "get back to you", "I will check and revert" is fine), wrong collocations.
+- "original" must be a short exact quote from the learner; "corrected" the minimal fix in context. explanation_ko: one friendly Korean sentence with the rule.
+- Never mark correct sentences as errors. Don't correct style in "corrected" — use "better" for style/professional tone.
+
+${KNOWLEDGE}`;
+}
+
+function buildReportPrompt(call){
+  const sc = call.scenario;
+  const lines = call.log.map(m => (m.role==='ai' ? 'CUSTOMER: ' : 'LEARNER: ') + m.text).join('\n');
+  const live = call.log.filter(m=>m.corr).map(m=>'- "'+m.corr.original+'" -> "'+m.corr.corrected+'"').join('\n') || '(none)';
+  return {
+    system: `You are an expert business-English coach for a Korean semiconductor equipment sales representative (intermediate, about B1, 3-month goal: confident phone calls with overseas customers about micro SAW & VISION PLACEMENT). Evaluate one phone role-play honestly. Scoring guide: B1 ≈ 55-65, B1+ ≈ 65-72, B2 ≈ 72-82, C1 ≈ 85+. Do not inflate. Judge only the LEARNER lines (they come from speech recognition: ignore punctuation, capitalization and obvious recognition glitches). Write Korean in polite ~요 style.\n\n${KNOWLEDGE}`,
+    messages:[{role:'user', content:`Scenario: ${sc.title} (week ${sc.week||currentWeek()})\nGoal: ${sc.goal_en}\nCall length: ${fmtDur(call.duration)}\n\nLive corrections already shown to the learner:\n${live}\n\nTranscript:\n${lines}\n\nCreate the report.`}],
+  };
+}
+
+/* ---------------------------- SPEECH: TTS ---------------------------- */
+const SILENT_WAV = (()=>{ // 0.25 s of silence, 8 kHz mono 8-bit PCM
+  const n=2000, b=new Uint8Array(44+n), w=(o,str)=>{ for(let i=0;i<str.length;i++) b[o+i]=str.charCodeAt(i); }, u32=(o,v)=>{ b[o]=v&255;b[o+1]=v>>8&255;b[o+2]=v>>16&255;b[o+3]=v>>24&255; };
+  w(0,'RIFF'); u32(4,36+n); w(8,'WAVEfmt '); u32(16,16); b[20]=1; b[22]=1; u32(24,8000); u32(28,8000); b[32]=1; b[34]=8; w(36,'data'); u32(40,n); b.fill(128,44);
+  let bin=''; b.forEach(x=>bin+=String.fromCharCode(x)); return 'data:audio/wav;base64,'+btoa(bin);
+})();
+const TTS = {
+  voices:[], current:null, token:0,
+  engine(){
+    const pref = S.settings.ttsEngine;
+    if (pref==='off') return null;
+    if ((pref==='auto'||pref==='claude') && RT.caps.tts) return 'claude';
+    if ('speechSynthesis' in window) return 'web';
+    return null;
+  },
+  loadVoices(){ if (!('speechSynthesis' in window)) return; const v = speechSynthesis.getVoices(); if (v.length) this.voices = v; },
+  pickVoice(){
+    const v = this.voices.length ? this.voices : (('speechSynthesis' in window) ? speechSynthesis.getVoices() : []);
+    const en = v.filter(x=>/^en[-_]/i.test(x.lang));
+    const us = en.filter(x=>/en[-_]US/i.test(x.lang));
+    return us.find(x=>/google/i.test(x.name)) || us.find(x=>/samantha|ava|allison|nicky|aaron/i.test(x.name) && !/compact|eloquence/i.test(x.name)) || us.find(x=>x.localService) || us[0] || en[0] || null;
+  },
+  rate(){
+    const ph = phaseOf(RT.call?.scenario?.week || currentWeek());
+    const base = ph===1?0.92:ph===2?1.0:1.06;
+    return Math.min(1.5, Math.max(0.7, base*S.settings.ttsRate));
+  },
+  // Returns true if speech was heard to start, false if it failed (caller shows a "tap to hear" fallback).
+  async speak(text, voice){
+    const eng = this.engine();
+    if (!eng || !text) return true;
+    this.stop();
+    const my = ++this.token;
+    if (eng==='claude' && !this.claudeBroken){
+      for (let attempt=0; attempt<3; attempt++){
+        try{ await RT.caps.tts.speak(text, {voice: voice||'buttery', rate:this.rate(), language:'en'}); return true; }
+        catch(e){
+          const code = e && e.code;
+          if (my !== this.token || code==='viewer_stopped') return true; // stopped on purpose
+          if (code==='busy' || code==='rate_limited'){ await sleep(700*(attempt+1)); if (my !== this.token) return true; continue; }
+          if (code==='not_granted'){ S.settings.ttsEngine='web'; Store.save(); }
+          this.claudeBroken = true; break; // fall back to the device voice below
+        }
+      }
+      if (my !== this.token) return true;
+      if (!('speechSynthesis' in window)) return false;
+    }
+    return this.speakWeb(text, my);
+  },
+  async speakWeb(text, my){
+    if (!('speechSynthesis' in window)) return false;
+    try{ speechSynthesis.resume(); }catch(e){} // un-stick a paused queue (Safari/Chrome quirk)
+    // Web Speech: split into sentences to avoid Android's long-utterance cutoff
+    const parts = text.match(/[^.!?]+[.!?]*\s*/g) || [text];
+    const v = this.pickVoice();
+    if (IS_IOS) await sleep(60);
+    let heard = false;
+    for (let i=0;i<parts.length;i++){
+      const part = parts[i];
+      if (my !== this.token) return true;
+      const ok = await new Promise(res=>{
+        const u = new SpeechSynthesisUtterance(part.trim());
+        u.lang = 'en-US'; if (v) u.voice = v; u.rate = this.rate(); u.volume = 1;
+        let started = false, done = false;
+        const fin = r=>{ if(!done){ done=true; res(r); } };
+        u.onstart = ()=>{ started = true; };
+        u.onend = ()=>fin(true);
+        u.onerror = ev=>fin(!!started && ev && ev.error==='interrupted');
+        // watchdog: if nothing starts in 2.5s the engine is blocked (silent mode, audio session, no gesture)
+        setTimeout(()=>{ if (!started && !speechSynthesis.speaking){ try{ speechSynthesis.cancel(); }catch(_){} fin(false); } }, 2500);
+        setTimeout(()=>fin(true), 4000 + part.length*120); // safety for engines that never fire onend
+        try{ speechSynthesis.speak(u); }catch(_){ fin(false); }
+      });
+      if (!ok && !heard) return false;
+      heard = heard || ok;
+    }
+    return true;
+  },
+  // Call from a tap: plays a silent clip so iOS opens its audio session for playback, and wakes speechSynthesis.
+  prime(){
+    try{
+      if (!this._a){ this._a = new Audio(SILENT_WAV); this._a.setAttribute('playsinline',''); }
+      const p = this._a.play(); if (p && p.catch) p.catch(()=>{});
+    }catch(e){}
+    try{ if ('speechSynthesis' in window && this.engine()!=='claude'){ speechSynthesis.resume(); const u=new SpeechSynthesisUtterance(' '); u.volume=0; speechSynthesis.speak(u); } }catch(e){}
+  },
+  stop(){
+    this.token++;
+    try{ if (RT.caps.tts) RT.caps.tts.stop(); }catch(e){}
+    // iOS ignores a speak() issued right after an unnecessary cancel(); only cancel when something is queued
+    try{ if ('speechSynthesis' in window && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel(); }catch(e){}
+  },
+};
+if ('speechSynthesis' in window){ TTS.loadVoices(); speechSynthesis.onvoiceschanged = ()=>TTS.loadVoices(); }
+
+/* ---------------------------- SPEECH: STT ---------------------------- */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+const UA = navigator.userAgent || '';
+const IS_IOS = /iPad|iPhone|iPod/.test(UA) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+const IS_ANDROID = /Android/i.test(UA);
+const IS_STANDALONE = !!(navigator.standalone || (window.matchMedia && matchMedia('(display-mode: standalone)').matches));
+const IOS_OTHER_BROWSER = IS_IOS && /CriOS|FxiOS|EdgiOS|OPiOS|GSA\/|KAKAOTALK|NAVER|Instagram|FBAN|FBAV|Line\/|DaumApps|Whale/i.test(UA);
+const IN_FRAME = (()=>{ try{ return window.self !== window.top; }catch(e){ return true; } })();
+// Why the in-app mic button can't be used here (null = it can)
+function micBlockReason(){
+  if (RT.caps.dictation) return null;
+  if (IS_IOS){
+    if (IOS_OTHER_BROWSER) return 'ios-browser';
+    if (IS_STANDALONE) return 'ios-homescreen';
+    if (RT.inArtifact || IN_FRAME) return 'ios-artifact';
+  } else if (RT.inArtifact) return 'artifact';
+  if (!SR) return 'no-sr';
+  if (STT.denied) return 'denied';
+  return null;
+}
+function dictationTip(){
+  const r = micBlockReason();
+  if (IS_IOS) return '아이폰 키보드에서 언어를 <b>English</b>로 바꾼 뒤(지구본 버튼), 오른쪽 아래 <b>마이크 아이콘</b>을 누르면 말로 입력돼요.' + (r==='ios-homescreen'||r==='ios-artifact'||r==='ios-browser' ? ' 앱 안의 마이크 버튼은 <b>Safari 탭</b>에서 열어야 쓸 수 있어요.' : '');
+  if (IS_ANDROID) return 'Gboard 키보드의 <b>마이크 아이콘</b>을 누르면 말로 입력할 수 있어요. 키보드 언어를 English로 해 두세요.';
+  return '키보드의 음성 입력 기능으로 말해도 돼요.';
+}
+const STT = {
+  active:false, finals:[], partial:'', rec:null, denied:false, onUpdate:null, onDone:null,
+  kind(){ if (RT.caps.dictation) return 'claude'; return micBlockReason() ? null : 'web'; },
+  // rebuild the transcript from all results each event (handles Android and iOS Safari duplicate/cumulative quirks)
+  rebuild(results){
+    const parts = [];
+    for (let i=0;i<results.length;i++){
+      const t = (results[i][0] && results[i][0].transcript || '').trim(); if (!t) continue;
+      const last = parts[parts.length-1];
+      if (last && norm(t).startsWith(norm(last))) parts[parts.length-1] = t;
+      else if (last && norm(last).startsWith(norm(t))) {}
+      else parts.push(t);
+    }
+    this.finals = parts; this.partial = '';
+  },
+  text(){ return (this.finals.join(' ')+' '+this.partial).replace(/\s+/g,' ').trim(); },
+  addFinal(t){
+    t = (t||'').trim(); if (!t) return;
+    const last = this.finals[this.finals.length-1];
+    if (last && norm(t).startsWith(norm(last))) this.finals[this.finals.length-1] = t; // Android cumulative-result quirk
+    else if (last && norm(last).startsWith(norm(t))) {/* duplicate */}
+    else this.finals.push(t);
+  },
+  // MUST be called synchronously from a click handler
+  start(onUpdate, onDone){
+    this.finals=[]; this.partial=''; this.onUpdate=onUpdate; this.onDone=onDone;
+    const k = this.kind();
+    if (k==='claude'){
+      this.active = true;
+      RT.caps.dictation.start().catch(e=>{
+        this.active=false;
+        if (e && e.code==='not_granted'){ toast('마이크 사용이 거부되어 키보드 입력으로 전환해요.'); RT.caps.dictation=null; }
+        this.finish(true);
+      });
+      return true;
+    }
+    if (k==='web'){
+      const rec = new SR();
+      rec.lang='en-US'; rec.continuous=!IS_IOS; // iOS Safari is more stable with single-utterance mode rec.interimResults=true; rec.maxAlternatives=1;
+      const auto = !!(RT.call && RT.call.autoStarted);
+      rec.onresult = ev=>{ this.rebuild(ev.results); this.onUpdate && this.onUpdate(this.text()); };
+      rec.onerror = ev=>{
+        if (ev.error==='not-allowed' || ev.error==='service-not-allowed'){
+          if (auto) return; // auto-start without a tap can be refused; not a real denial
+          this.denied=true;
+          if (IS_IOS && ev.error==='service-not-allowed') toast('아이폰 설정 > Siri에서 Siri를 켜야 음성 인식이 돼요. 지금은 키보드로 입력하세요.', 5000);
+          else toast(IS_IOS ? '마이크 권한이 없어요. 설정 > Safari > 마이크에서 허용하거나 키보드로 입력하세요.' : '마이크 권한이 없어요. 브라우저 설정에서 허용하거나 키보드로 입력하세요.', 5000);
+        }
+        else if (ev.error==='network'){ toast('음성 인식에 인터넷 연결이 필요해요.'); }
+        else if (ev.error==='audio-capture'){ toast('마이크를 찾을 수 없어요. 다른 앱이 마이크를 쓰고 있는지 확인하세요.'); }
+      };
+      rec.onend = ()=>{ if (this.rec===rec){ this.rec=null; this.finish(); } };
+      try{ rec.start(); this.rec=rec; this.active=true; return true; }
+      catch(e){ this.active=false; return false; }
+    }
+    return false;
+  },
+  stop(){
+    if (!this.active) return;
+    if (RT.caps.dictation && this.kind()==='claude'){ RT.caps.dictation.stop().catch(()=>{}); return; }
+    if (this.rec){
+      const rec = this.rec;
+      try{ rec.stop(); }catch(e){ this.rec=null; this.finish(); return; }
+      // Safari sometimes never fires onend after stop(): finish anyway
+      setTimeout(()=>{ if (this.rec===rec){ this.rec=null; try{ rec.abort(); }catch(_){} this.finish(); } }, 1500);
+    }
+  },
+  abort(){
+    this.onDone = null;
+    if (this.rec){ try{ this.rec.abort(); }catch(e){} this.rec=null; }
+    if (RT.caps.dictation && this.active){ RT.caps.dictation.stop().catch(()=>{}); }
+    this.active=false;
+  },
+  finish(silent){
+    if (!this.active && !silent && !this.onDone) return;
+    this.active=false;
+    const t = this.text(); this.partial='';
+    const cb = this.onDone; this.onDone=null;
+    cb && cb(silent ? '' : t);
+  },
+};
+function wireDictation(d){
+  d.onPartial(({text})=>{ STT.partial = text||''; STT.onUpdate && STT.onUpdate(STT.text()); });
+  d.onFinal(({text})=>{ STT.addFinal(text); STT.partial=''; STT.onUpdate && STT.onUpdate(STT.text()); });
+  d.onState(({state})=>{ if (state==='idle' && STT.active) STT.finish(); });
+}
+
+/* ---------------------------- ICONS ---------------------------- */
+const IC = {
+  home:'<path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+  map:'<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2-6-2z"/><path d="M9 4v14M15 6v14"/>',
+  book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/>',
+  gear:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
+  phone:'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+  hang:'<path d="M3 15c5-5 13-5 18 0l-2.5 2.5-3-1.5v-2.5a10 10 0 0 0-7 0V16l-3 1.5z"/>',
+  mic:'<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 0 1-14 0"/><path d="M12 17v5"/>',
+  stop:'<rect x="6" y="6" width="12" height="12" rx="2"/>',
+  kbd:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/>',
+  bulb:'<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/>',
+  back:'<path d="M15 18l-6-6 6-6"/>',
+  send:'<path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/>',
+  vol:'<path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/>',
+  check:'<path d="M20 6L9 17l-5-5"/>',
+  trash:'<path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M19 6l-1 14H6L5 6"/>',
+  refresh:'<path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/>',
+  doc:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/>',
+  chip:'<rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/>',
+  calendar:'<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  repeat:'<path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/>',
+  spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/>',
+};
+['inbox','flow','eye','factory','signal','note','compare','robot','boxes','shield','alert','wrench','saw','gauge','tag','handshake','chat','door','rocket','lens','coffee','flag','bolt','medal'].forEach(k=>{ if(!IC[k]) IC[k]=IC.chip; });
+IC.eye='<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>';
+IC.alert='<path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/>';
+IC.chat='<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>';
+IC.flag='<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/>';
+function svg(name, size=20, sw=1.8){ return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${IC[name]||IC.chip}</svg>`; }
+
+/* ---------------------------- UI HELPERS ---------------------------- */
+const $app = document.getElementById('app');
+function toast(msg, ms=2800){ const t=document.getElementById('toast'); t.textContent=msg; t.hidden=false; clearTimeout(RT.toastT); RT.toastT=setTimeout(()=>t.hidden=true, ms); }
+function fmtDur(sec){ sec=Math.max(0,Math.round(sec||0)); return Math.floor(sec/60)+'분 '+String(sec%60).padStart(2,'0')+'초'; }
+function fmtClock(sec){ sec=Math.max(0,Math.floor(sec)); return String(Math.floor(sec/60)).padStart(2,'0')+':'+String(sec%60).padStart(2,'0'); }
+function weekSessions(){ const now=todayStr(); return S.sessions.filter(s=>daysBetween(s.date, now) < 7 && daysBetween(s.date, now) >= 0); }
+function streak(){
+  const days = new Set(S.sessions.map(s=>s.date)); let n=0; let d=new Date();
+  if (!days.has(todayStr(d))) d.setDate(d.getDate()-1);
+  while (days.has(todayStr(d))){ n++; d.setDate(d.getDate()-1); }
+  return n;
+}
+function nav(){
+  const items=[['home','홈','home'],['roadmap','로드맵','map'],['notebook','오답노트','book'],['settings','설정','gear']];
+  return `<nav class="nav" aria-label="메인 메뉴">${items.map(([k,l,i])=>`<button data-act="tab" data-tab="${k}" class="${RT.tab===k?'on':''}" ${RT.tab===k?'aria-current="page"':''}>${svg(i,22)}${l}</button>`).join('')}</nav>`;
+}
+function go(screen){ RT.screen=screen; if (['home','roadmap','notebook','settings'].includes(screen)) RT.tab=screen; render(); window.scrollTo(0,0); }
+
+/* ---------------------------- SCREENS ---------------------------- */
+function render(){
+  const fn = {home:vHome, roadmap:vRoadmap, notebook:vNotebook, settings:vSettings, brief:vBrief, call:vCall, report:vReport}[RT.screen] || vHome;
+  $app.innerHTML = fn();
+  if (RT.screen==='call') afterCallRender();
+}
+
+function connBanner(){
+  if (RT.booting) return '';
+  const m = aiMode();
+  if (m==='claude') return '';
+  if (m==='api') return '';
+  return `<div class="alert"><b>AI 연결이 필요해요.</b><br>설정에서 Claude API 키를 입력하면 바로 통화할 수 있어요.<div style="margin-top:10px"><button class="btn primary" data-act="tab" data-tab="settings">설정으로 이동</button></div></div>`;
+}
+
+function micHelp(){
+  if (RT.booting || RT.helpHidden || Store.lsGet('fabtalk.help')) return '';
+  const r = micBlockReason();
+  if (!r || r==='denied') return '';
+  const why = {
+    'ios-homescreen':'홈 화면에 추가한 앱에서는 아이폰이 앱 안 음성 인식을 막아요.',
+    'ios-artifact':'Claude 안에서 열면 아이폰이 앱 안 마이크를 막아요.',
+    'ios-browser':'아이폰의 크롬·카카오톡 등 앱 내 브라우저에서는 음성 인식이 안 돼요.',
+    'artifact':'이 화면에서는 앱 안 마이크를 쓸 수 없어요.',
+    'no-sr':'이 브라우저는 음성 인식을 지원하지 않아요.',
+  }[r] || '';
+  return `<div class="alert info"><b>${IS_IOS?'아이폰에서 말로 통화하는 법':'말로 통화하는 법'}</b><br>${esc(why)} 대신 <b>키보드 받아쓰기</b>로 똑같이 말로 연습할 수 있어요.<br>${dictationTip()}<div style="margin-top:8px"><button class="mini" style="color:#1E3A8A;border-color:#A5B4FC" data-act="hidehelp">알겠어요</button></div></div>`;
+}
+function vHome(){
+  const wk = currentWeek(); const W = WEEKS[wk-1]; const ph = PHASES[phaseOf(wk)-1];
+  const ws = weekSessions().length; const goal = S.settings.weeklyGoal;
+  const pct = Math.min(100, Math.round(ws/goal*100));
+  const recent = S.sessions.slice(-8);
+  const avg = s => Math.round(((s.scores?.grammar||0)+(s.scores?.vocabulary||0)+(s.scores?.fluency||0)+(s.scores?.task||0))/4);
+  const topMist = S.notebook.filter(n=>!n.mastered).sort((a,b)=>b.count-a.count).slice(0,2);
+  const unm = S.notebook.filter(n=>!n.mastered).length;
+  const totalMin = Math.round(S.sessions.reduce((a,s)=>a+(s.duration||0),0)/60);
+  return `<main class="screen">
+  <div class="row between">
+    <div class="col" style="gap:4px"><p class="small muted">${esc(ph.name)} · ${wk}주차 / 12주</p><h1>오늘의 전화영어</h1></div>
+    <span class="chip">${streak()}일 연속</span>
+  </div>
+  ${connBanner()}
+  ${micHelp()}
+  <section class="card dark col" style="gap:12px" aria-label="이번 주 학습">
+    <div class="row between"><span class="small" style="color:#94A3B8">이번 주 (최근 7일)</span><span class="chip dark">목표 ${goal}회</span></div>
+    <div class="row" style="align-items:baseline;gap:6px"><b style="font-size:34px">${ws}</b><span style="color:#CBD5E1">/ ${goal}회 통화</span></div>
+    <div class="progress" role="progressbar" aria-valuenow="${ws}" aria-valuemin="0" aria-valuemax="${goal}"><div style="width:${pct}%"></div></div>
+    ${topMist.length?`<p class="small" style="color:#CBD5E1">자주 틀린 표현: ${topMist.map(m=>`<span style="color:var(--wrong-d)">${esc(m.original)}</span>`).join(', ')}</p>`:`<p class="small" style="color:#CBD5E1">누적 ${S.sessions.length}회 · ${totalMin}분 연습</p>`}
+  </section>
+  <section class="col" style="gap:10px">
+    <div class="row between"><h2>${wk}주차 · ${esc(W.theme)}</h2></div>
+    <p class="small muted">문법 포커스: ${esc(W.grammar)}</p>
+    ${W.scen.map(s=>{ const n=S.done[s.id]||0; return `<button class="scen ${n?'done':''}" data-act="brief" data-id="${s.id}">
+      <span class="ico">${svg(s.icon)}</span>
+      <span style="flex:1"><span class="t">${esc(s.title)}</span><span class="d" style="display:block">${esc(s.persona.title)} · ${esc(s.persona.org)}</span></span>
+      <span class="small ${n?'':'muted'}" style="${n?'color:var(--accent-ink);font-weight:600':''}">${n?n+'회 완료':'시작'}</span></button>`; }).join('')}
+    <button class="scen" data-act="brief" data-id="review" ${unm<3?'disabled style="opacity:.55"':''}>
+      <span class="ico">${svg('repeat')}</span>
+      <span style="flex:1"><span class="t">오답 복습 통화</span><span class="d" style="display:block">${unm<3?'틀린 표현이 3개 이상 쌓이면 열려요':'자주 틀린 표현 '+Math.min(unm,8)+'개를 대화 속에서 다시 써 보기'}</span></span>
+    </button>
+    <button class="scen" data-act="brief" data-id="free">
+      <span class="ico">${svg('spark')}</span>
+      <span style="flex:1"><span class="t">자유 주제 통화</span><span class="d" style="display:block">실제로 곧 할 통화를 미리 연습해 보세요</span></span>
+    </button>
+  </section>
+  ${recent.length>=2?`<section class="card col"><div class="row between"><h3>최근 통화 점수</h3><span class="small muted">평균 ${Math.round(recent.reduce((a,s)=>a+avg(s),0)/recent.length)}점</span></div>
+    <div class="bars" aria-label="최근 통화 평균 점수 그래프">${recent.map(s=>`<div style="height:${Math.max(4,avg(s))}%" title="${s.date} ${avg(s)}점"></div>`).join('')}</div>
+    <p class="small muted">최근 CEFR 추정: <b>${esc(recent[recent.length-1].cefr||'-')}</b></p></section>`:''}
+  </main>${nav()}`;
+}
+
+function vRoadmap(){
+  const cur = currentWeek();
+  return `<main class="screen">
+  <div class="col" style="gap:4px"><h1>12주 로드맵</h1><p class="small muted">중급(B1) → 해외 고객과 자신 있게 통화하는 B2 수준 목표 · 주 ${S.settings.weeklyGoal}회 · 1회 10~15분</p></div>
+  ${PHASES.map(ph=>`<section class="col" style="gap:10px">
+    <div><h2>Phase ${ph.id}. ${esc(ph.name)}</h2><p class="small muted" style="margin-top:4px">${ph.weeks[0]}~${ph.weeks[1]}주 · ${esc(ph.desc)}</p></div>
+    ${WEEKS.filter(w=>w.w>=ph.weeks[0]&&w.w<=ph.weeks[1]).map(w=>{ const doneN = w.scen.reduce((a,s)=>a+(S.done[s.id]?1:0),0); const cls = w.w===cur?'cur':(w.w<cur?'past':'');
+      return `<button class="week ${cls}" data-act="setweek" data-w="${w.w}" aria-label="${w.w}주차로 이동">
+        <span class="wnum">${w.w}</span>
+        <span style="flex:1"><span style="display:block;font-weight:600">${esc(w.theme)}</span><span class="small muted" style="display:block;margin-top:3px">${esc(w.grammar)}</span><span class="small" style="display:block;margin-top:6px;color:var(--accent-ink)">상황 ${doneN}/3 완료${w.w===cur?' · 현재 주차':''}</span></span>
+      </button>`; }).join('')}
+  </section>`).join('')}
+  <p class="note">주차는 시작일(${esc(S.startDate)})부터 자동으로 넘어가요. 다른 주차를 누르면 그 주차로 바꿀 수 있어요.${S.weekOverride?` <button class="btn ghost" style="min-height:36px;margin-top:8px" data-act="autoweek">자동 진행으로 되돌리기</button>`:''}</p>
+  </main>${nav()}`;
+}
+
+function vNotebook(){
+  const tab = RT.nbTab;
+  const items = S.notebook.slice().sort((a,b)=> (a.mastered-b.mastered) || (b.count-a.count) || (b.lastSeen-a.lastSeen));
+  return `<main class="screen">
+  <h1>오답노트</h1>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="${tab==='mistakes'}" class="${tab==='mistakes'?'on':''}" data-act="nbtab" data-t="mistakes">틀린 표현 ${S.notebook.filter(n=>!n.mastered).length}</button>
+    <button role="tab" aria-selected="${tab==='expr'}" class="${tab==='expr'?'on':''}" data-act="nbtab" data-t="expr">표현집 ${S.expressions.length}</button>
+    <button role="tab" aria-selected="${tab==='hist'}" class="${tab==='hist'?'on':''}" data-act="nbtab" data-t="hist">기록 ${S.sessions.length}</button>
+  </div>
+  ${tab==='mistakes' ? (items.length? items.map(n=>`<div class="citem" style="${n.mastered?'opacity:.55':''}">
+      <div class="row between"><span class="chip gray">${esc(catKo(n.category))}${n.count>1?' · '+n.count+'회':''}</span>
+      <div class="row" style="gap:6px"><button class="iconbtn" data-act="say" data-text="${esc(n.corrected)}" aria-label="고친 문장 듣기">${svg('vol',18)}</button>
+      <button class="iconbtn" data-act="master" data-id="${n.id}" aria-label="${n.mastered?'다시 복습 목록에 넣기':'외웠어요'}" style="${n.mastered?'background:var(--accent-soft);color:var(--accent-ink)':''}">${svg('check',18)}</button></div></div>
+      <p class="wrong">${esc(n.original)}</p><p class="right">${esc(n.corrected)}</p><p class="why">${esc(n.explanation_ko)}</p></div>`).join('')
+      : `<div class="card"><p class="muted">아직 틀린 표현이 없어요. 통화 중 교정된 문장이 여기에 모여요.</p></div>`) : ''}
+  ${tab==='expr' ? (S.expressions.length? `<div class="card dark" style="padding:4px 16px">${S.expressions.slice().reverse().map(e=>`<div class="exp"><div><p style="font-weight:600">${esc(e.en)}</p><p class="small" style="color:#CBD5E1;margin-top:3px">${esc(e.ko)}</p></div><button class="mini" data-act="say" data-text="${esc(e.en)}" aria-label="듣기">${svg('vol',14)}</button></div>`).join('')}</div>`
+      : `<div class="card"><p class="muted">통화 리포트의 ‘오늘의 표현’을 저장하면 여기에 모여요.</p></div>`) : ''}
+  ${tab==='hist' ? (S.sessions.length? S.sessions.slice().reverse().map(s=>`<div class="citem"><div class="row between"><b>${esc(s.title)}</b><span class="small muted">${esc(s.date)}</span></div>
+      <p class="small muted">${s.week}주차 · ${fmtDur(s.duration)} · ${s.turns}턴${s.cefr?' · '+esc(s.cefr):''}</p>
+      ${s.scores?`<p class="small">문법 ${s.scores.grammar} · 어휘 ${s.scores.vocabulary} · 유창성 ${s.scores.fluency} · 목표달성 ${s.scores.task}</p>`:''}
+      ${s.summary?`<p class="why">${esc(s.summary)}</p>`:''}</div>`).join('')
+      : `<div class="card"><p class="muted">아직 통화 기록이 없어요.</p></div>`) : ''}
+  </main>${nav()}`;
+}
+function catKo(c){ return ({grammar:'문법',tense:'시제',preposition:'전치사',article:'관사',vocabulary:'어휘',word_order:'어순',expression:'표현'})[c]||'교정'; }
+
+function vSettings(){
+  const m = aiMode(); const st = S.settings;
+  const usageM = S.usage[monthStr()];
+  return `<main class="screen">
+  <h1>설정</h1>
+  <section class="card col" style="gap:12px">
+    <h2>AI 연결</h2>
+    ${RT.caps.sample ? `<div class="alert ok">Claude 앱에 연결되어 있어요. <b>API 키 없이</b> 사용 중이며, 사용량은 Claude 플랜 한도에서 차감돼요.</div>
+      <div class="field"><label for="tier">응답 모드</label><select id="tier" class="input" data-set="tier"><option value="default" ${st.tier==='default'?'selected':''}>정확도 우선 (권장)</option><option value="quick" ${st.tier==='quick'?'selected':''}>속도 우선</option></select></div>`
+    : `<div class="field"><label for="apikey">Claude API 키</label>
+        <input id="apikey" class="input" type="password" autocomplete="off" placeholder="sk-ant-..." value="${esc(st.apiKey)}" data-set="apiKey">
+        <p class="note">키는 이 기기의 브라우저에만 저장되고, Anthropic 서버로만 전송돼요. 키를 남과 공유하지 마시고, Claude Console에서 월 사용 한도를 걸어 두세요.</p></div>
+      <div class="field"><label for="model">모델</label><select id="model" class="input" data-set="model">
+        ${[['claude-haiku-5-5','Haiku 5.5 · 빠르고 저렴 (권장)'],['claude-sonnet-5-5','Sonnet 5.5 · 교정 정확도 높음 · 약 20배 비쌈']].map(([v,l])=>`<option value="${v}" ${st.model===v?'selected':''}>${l}</option>`).join('')}
+        ${!['claude-haiku-5-5','claude-sonnet-5-5'].includes(st.model)?`<option value="${esc(st.model)}" selected>${esc(st.model)}</option>`:''}
+      </select></div>
+      <button class="btn ghost" data-act="testapi">${svg('refresh',18)} 연결 테스트</button>
+      ${usageM?`<p class="note">이번 달 추정 사용료: <b>${usageM.usd<0.01?'$0.01 미만':'$'+usageM.usd.toFixed(2)}</b> (입력 ${Math.round(usageM.in/1000)}K · 출력 ${Math.round(usageM.out/1000)}K 토큰). 실제 청구액은 Claude Console에서 확인하세요.</p>`:''}`}
+  </section>
+  <section class="card col" style="gap:4px">
+    <h2 style="margin-bottom:8px">음성</h2>
+    <div class="field"><label for="tts">AI 목소리</label><select id="tts" class="input" data-set="ttsEngine">
+      <option value="auto" ${st.ttsEngine==='auto'?'selected':''}>자동</option>
+      ${RT.caps.tts?`<option value="claude" ${st.ttsEngine==='claude'?'selected':''}>Claude 음성</option>`:''}
+      <option value="web" ${st.ttsEngine==='web'?'selected':''}>기기 음성 (Google)</option>
+      <option value="off" ${st.ttsEngine==='off'?'selected':''}>끄기 (자막만)</option></select></div>
+    <button class="btn ghost" style="margin-top:10px" data-act="soundtest">${svg('vol',18)} 소리 테스트</button>
+    <div class="field" style="margin-top:10px"><label for="rate">말하기 속도 <span class="muted" id="ratev">${Math.round(st.ttsRate*100)}%</span></label>
+      <input id="rate" type="range" min="0.75" max="1.25" step="0.05" value="${st.ttsRate}" data-set="ttsRate" style="width:100%;accent-color:var(--accent)"></div>
+    <p class="note">주차가 올라가면 기본 속도도 조금씩 빨라져요.</p>
+    <label class="switch" ${IS_IOS?'hidden':''}><span>AI 말이 끝나면 자동으로 듣기 시작</span><input type="checkbox" data-set="autoListen" ${st.autoListen?'checked':''}></label>
+    <label class="switch"><span>말을 멈추면 바로 전송 (끄면 확인 후 전송)</span><input type="checkbox" data-set="autoSend" ${st.autoSend?'checked':''}></label>
+    <p class="note">음성 인식: ${STT.kind()==='claude'?'Claude 받아쓰기':STT.kind()==='web'?(IS_IOS?'Safari 음성 인식 (Siri 켜짐 필요)':'크롬 음성 인식 (인터넷 필요)'):'앱 안 마이크 사용 불가 → 키보드 받아쓰기 사용'}</p>
+    ${!STT.kind()?`<p class="note">${dictationTip()}</p>`:''}
+  </section>
+  <section class="card col" style="gap:4px">
+    <h2 style="margin-bottom:8px">학습</h2>
+    <label class="switch"><span>통화 중 실시간 교정 보기</span><input type="checkbox" data-set="showCorrections" ${st.showCorrections?'checked':''}></label>
+    <label class="switch"><span>AI 말에 한글 번역 항상 보기</span><input type="checkbox" data-set="autoKo" ${st.autoKo?'checked':''}></label>
+    <div class="field" style="margin-top:6px"><label for="goal">주간 목표 통화 수</label><select id="goal" class="input" data-set="weeklyGoal">${[3,4,5,6,7,10].map(n=>`<option value="${n}" ${st.weeklyGoal===n?'selected':''}>${n}회</option>`).join('')}</select></div>
+    <div class="field" style="margin-top:10px"><label for="start">학습 시작일</label><input id="start" class="input" type="date" value="${esc(S.startDate)}" data-set="startDate"></div>
+  </section>
+  <section class="card col" style="gap:10px">
+    <h2>데이터</h2>
+    <p class="note">${RT.dbReady?'학습 기록은 Claude 계정에 자동 저장돼요(본인만 볼 수 있음).':'학습 기록은 이 기기 브라우저에 저장돼요. 기기를 바꾸거나 브라우저 데이터를 지우기 전에 백업하세요.'}</p>
+    <div class="row"><button class="btn ghost" style="flex:1" data-act="export">백업 복사</button><button class="btn ghost" style="flex:1" data-act="import">백업 붙여넣기</button></div>
+    <textarea id="backup" class="input" placeholder="백업 데이터" aria-label="백업 데이터" hidden></textarea>
+    <button class="btn danger" data-act="reset">모든 기록 초기화</button>
+  </section>
+  <p class="note" style="text-align:center">FabTalk v1.0 · micro SAW &amp; VISION PLACEMENT 영업 특화</p>
+  </main>${nav()}`;
+}
+
+/* ---- Briefing (pre-call) ---- */
+function scenarioById(id){
+  if (id==='review'){
+    const items = S.notebook.filter(n=>!n.mastered).sort((a,b)=>b.count-a.count||b.lastSeen-a.lastSeen).slice(0,8);
+    const wk = currentWeek();
+    return {id:'review', kind:'review', week:wk, title:'오답 복습 통화', icon:'repeat',
+      persona:{name:'Rajesh Kumar', init:'RK', title:'Process Engineer', org:'OSAT in Penang, Malaysia', voice:'rounded'},
+      situation:"A friendly regular customer calls to catch up on an ongoing MSVP project (schedule, a small technical question, next order). Steer the talk so the learner needs the review expressions.",
+      goal_ko:'예전에 틀렸던 표현을 올바르게 다시 써 보기', goal_en:'Use the previously corrected expressions correctly in context.', reviewItems:items};
+  }
+  if (id==='free'){
+    const wk = currentWeek();
+    return {id:'free', kind:'free', week:wk, title:'자유 주제 통화', icon:'spark',
+      persona:{name:'Alex Morgan', init:'AM', title:'Equipment Purchasing Lead', org:'semiconductor packaging company', voice:'buttery'},
+      situation:'', goal_ko:'', goal_en:''};
+  }
+  return ALL_SCEN.find(s=>s.id===id);
+}
+function vBrief(){
+  const sc = RT.brief; const W = WEEKS[(sc.week||currentWeek())-1];
+  const isFree = sc.kind==='free';
+  return `<main class="screen">
+  <div class="row"><button class="iconbtn" data-act="tab" data-tab="home" aria-label="뒤로">${svg('back')}</button><div class="col" style="gap:2px"><p class="small muted">${sc.week}주차 · 통화 준비</p><h1 style="font-size:21px">${esc(sc.title)}</h1></div></div>
+  <section class="card row" style="gap:14px">
+    <div class="avatar" style="width:56px;height:56px;color:#fff;background:var(--navy);font-size:18px">${esc(sc.persona.init)}</div>
+    <div class="col" style="gap:3px"><b>${esc(sc.persona.name)}</b><span class="small muted">${esc(sc.persona.title)}</span><span class="small muted">${esc(sc.persona.org)}</span></div>
+  </section>
+  ${isFree ? `<section class="card col" style="gap:12px">
+     <div class="field"><label for="free-sit">어떤 통화를 연습할까요?</label><textarea id="free-sit" class="input" placeholder="예) 말레이시아 고객에게 다음 달 데모 일정을 잡고, 샘플 스트립 30장을 보내 달라고 요청하는 통화">${esc(sc.freeSit||'')}</textarea></div>
+     <div class="field"><label for="free-role">상대방 역할 (선택)</label><input id="free-role" class="input" placeholder="예) Procurement Manager at an OSAT in Penang" value="${esc(sc.freeRole||'')}"></div>
+    </section>`
+  : `<section class="card col" style="gap:8px"><h3>통화 목표</h3><p>${esc(sc.goal_ko)}</p><p class="small muted">${esc(sc.goal_en)}</p></section>`}
+  ${sc.kind==='review' ? `<section class="card col" style="gap:8px"><h3>복습할 표현 ${sc.reviewItems.length}개</h3>${sc.reviewItems.map(x=>`<p class="small"><span style="color:var(--wrong);text-decoration:line-through">${esc(x.original)}</span> → <b style="color:var(--right)">${esc(x.corrected)}</b></p>`).join('')}</section>`
+  : (!isFree && W ? `<section class="card dark col" style="gap:4px;padding:6px 16px"><p class="small" style="color:#94A3B8;padding-top:10px">이번 주에 써 볼 표현</p>${W.expr.map(e=>`<div class="exp"><span>${esc(e)}</span><button class="mini" data-act="say" data-text="${esc(e.replace(/_+/g,'...'))}" aria-label="듣기">${svg('vol',14)}</button></div>`).join('')}</section>`:'')}
+  <div class="alert info">${STT.kind()?'통화 팁: 마이크 버튼을 누르고 말한 뒤, 다시 누르면 전송돼요. 막히면 <b>힌트</b>를 누르세요. 조용한 곳이 아니면 <b>키보드</b>로 입력해도 돼요.':'통화 팁: '+dictationTip()+' 막히면 <b>힌트</b>를 누르세요.'}</div>
+  ${connBanner()}
+  <button class="btn ghost block" data-act="soundtest">${svg('vol',18)} 소리 테스트 (AI 목소리가 들리는지 확인)</button>
+  <button class="btn primary big block" data-act="startcall" ${aiMode()==='none'?'disabled':''}>${svg('phone',20,2)} 전화 받기</button>
+  </main>`;
+}
+
+/* ---- Call ---- */
+function vCall(){
+  const c = RT.call; const p = c.scenario.persona;
+  const st = c.state; // thinking | speaking | idle | listening | ended
+  const statusText = {thinking:`${p.name.split(' ')[0]}이(가) 생각 중…`, speaking:`${p.name.split(' ')[0]}이(가) 말하는 중… (마이크를 누르면 끊고 말할 수 있어요)`, idle: STT.kind()? (c.kbd?'영어로 입력하세요':'마이크를 눌러 말하세요'):'입력창을 누르고 키보드 마이크로 말하거나 입력하세요', listening:'듣고 있어요… 다 말했으면 다시 누르세요', review:'인식된 문장을 확인하고 전송하세요', ended:'통화 종료'}[st]||'';
+  return `<main class="screen dark callscr">
+  <div class="call-head"><span class="chip">${esc(c.scenario.title)}</span>
+    <label class="row small" style="gap:6px;color:#CBD5E1"><input type="checkbox" data-act="togglecorr" ${S.settings.showCorrections?'checked':''} style="width:18px;height:18px;accent-color:var(--accent)">실시간 교정</label></div>
+  <div class="persona">
+    <div class="avatar ${st==='speaking'?'speaking':''}" id="avatar">${esc(p.init)}</div>
+    <h2 style="font-size:19px">${esc(p.name)} <span class="small" style="color:#94A3B8;font-weight:500">AI</span></h2>
+    <p class="small" style="color:#94A3B8">${esc(p.title)} · ${esc(p.org)}</p>
+    <p class="timer" id="timer">${fmtClock((Date.now()-c.startedAt)/1000)}</p>
+  </div>
+  <div class="log" id="log" aria-live="polite">${c.log.map((m,i)=>logItem(m,i)).join('')}
+    <div class="live" id="live"></div>
+    ${st==='thinking'?'<div class="bub ai" style="opacity:.7" aria-label="응답 생성 중">…</div>':''}
+  </div>
+  ${c.error?`<div class="alert" role="alert">${esc(c.error)} <button class="btn ghost" style="min-height:36px;margin-top:8px" data-act="retry">다시 시도</button></div>`:''}
+  ${c.audioIssue ? `<div class="hintbox" role="alert" style="border-style:solid;border-color:#B45309;background:#2A1E0F;color:#FDE68A"><b>AI 목소리가 안 들리나요?</b> ${IS_IOS?'아이폰 <b>무음 모드</b>(측면 스위치/동작 버튼)를 끄고 볼륨을 올린 뒤':'볼륨을 올린 뒤'} 아래 버튼을 눌러 주세요. 블루투스 기기에 연결돼 있는지도 확인하세요.<div style="margin-top:8px"><button class="btn primary" style="min-height:40px" data-act="replay">${svg('vol',18)} 탭해서 듣기</button></div></div>`:''}
+  ${c.showHint && c.lastHint ? `<div class="hintbox"><b>힌트</b> ${esc(c.lastHint.en)}<br><span style="color:#93C5FD">${esc(c.lastHint.ko)}</span></div>`:''}
+  <p class="status" id="status">${esc(statusText)}</p>
+  ${(c.kbd || !STT.kind() || st==='review') ? `<form class="composer" data-act="sendform"><input id="msg" lang="en" autocomplete="off" autocapitalize="sentences" autocorrect="on" spellcheck="true" enterkeyhint="send" placeholder="영어로 말하거나 입력하세요" aria-label="메시지 입력" value="${esc(c.draft||'')}" ${st==='thinking'?'disabled':''}><button class="cbtn" type="submit" aria-label="전송" style="background:var(--accent)" ${st==='thinking'?'disabled':''}>${svg('send',20)}</button></form>
+  ${!STT.kind() && !c.tipHidden ? `<div class="hintbox" style="border-style:solid;font-size:12px">${dictationTip()} <button class="mini" data-act="hidetip" style="margin-left:4px">닫기</button></div>`:''}`:''}
+  <div class="controls">
+    <button class="cbtn" data-act="kbd" aria-label="키보드 입력 ${c.kbd?'끄기':'켜기'}" aria-pressed="${!!c.kbd}" ${!STT.kind()?'disabled':''}>${svg('kbd',22)}</button>
+    <button class="cbtn" data-act="hint" aria-label="힌트 보기" aria-pressed="${!!c.showHint}" ${!c.lastHint?'disabled':''}>${svg('bulb',22)}</button>
+    <button class="mic ${st==='listening'?'on':''}" id="micbtn" data-act="mic" aria-label="${!STT.kind()?'키보드 열기 (키보드 마이크로 받아쓰기)':st==='listening'?'말하기 끝내고 전송':'말하기 시작'}" ${(st==='thinking'||st==='ended')?'disabled':''}>${svg(st==='listening'?'stop':'mic',30,2)}</button>
+    <button class="cbtn" data-act="replay" aria-label="마지막 말 다시 듣기" ${!c.log.some(m=>m.role==='ai')?'disabled':''}>${svg('vol',22)}</button>
+    <button class="cbtn end" data-act="endcall" aria-label="통화 종료">${svg('hang',24,2)}</button>
+  </div>
+  </main>`;
+}
+function logItem(m,i){
+  if (m.role==='ai'){
+    const showKo = S.settings.autoKo || m.showKo;
+    return `<div class="bub ai">${esc(m.text)}${showKo&&m.ko?`<span class="ko">${esc(m.ko)}</span>`:''}
+      <div class="bub-tools"><button class="mini" data-act="ko" data-i="${i}">${showKo?'번역 숨기기':'한글 번역'}</button><button class="mini" data-act="say" data-text="${esc(m.text)}">다시 듣기</button></div></div>`;
+  }
+  let h = `<div class="bub me">${esc(m.text)}</div>`;
+  if (S.settings.showCorrections){
+    if (m.corr) h += `<div class="corr"><span class="lab" style="color:var(--wrong-d)">교정 · ${esc(catKo(m.corr.category))}</span><p class="wrong">${esc(m.corr.original)}</p><p class="right">${esc(m.corr.corrected)}</p>${m.corr.explanation_ko?`<p class="why">${esc(m.corr.explanation_ko)}</p>`:''}</div>`;
+    if (m.better) h += `<div class="corr" style="border-style:dashed"><span class="lab" style="color:var(--right-d)">더 자연스럽게</span><p class="right" style="font-size:14px">${esc(m.better)}</p></div>`;
+  }
+  return h;
+}
+function afterCallRender(){
+  const log = document.getElementById('log'); if (log) log.scrollTop = log.scrollHeight;
+  clearInterval(RT.timerI);
+  RT.timerI = setInterval(()=>{ const t=document.getElementById('timer'); if(!t||!RT.call){clearInterval(RT.timerI);return;} t.textContent = fmtClock((Date.now()-RT.call.startedAt)/1000); }, 1000);
+  const msg = document.getElementById('msg'); if (msg && RT.call.state==='review') msg.focus();
+}
+function setLive(t){ const el=document.getElementById('live'); if (el) { el.textContent = t; const log=document.getElementById('log'); if(log) log.scrollTop=log.scrollHeight; } }
+
+/* ---- Report ---- */
+function vReport(){
+  const r = RT.report;
+  const s = r.session; const rep = r.data;
+  const live = r.liveCorr;
+  return `<main class="screen">
+  <div class="row"><button class="iconbtn" data-act="tab" data-tab="home" aria-label="홈으로">${svg('back')}</button><div class="col" style="gap:2px"><h1 style="font-size:22px">통화 리포트</h1><p class="small muted">${esc(s.title)} · ${fmtDur(s.duration)} · ${s.turns}턴</p></div></div>
+  ${r.loading?`<div class="card row" style="gap:12px"><div class="spinner" aria-hidden="true"></div><p>통화 내용을 분석하고 있어요…</p></div>`:''}
+  ${r.error?`<div class="alert" role="alert">${esc(r.error)}<div style="margin-top:10px"><button class="btn ghost" data-act="retryreport">다시 분석</button></div></div>`:''}
+  ${rep?`<div class="score-grid">${[['문법',rep.grammar],['어휘',rep.vocabulary],['유창성',rep.fluency],['목표달성',rep.task]].map(([l,v])=>`<div class="score"><span class="small muted">${l}</span><b>${v}</b></div>`).join('')}</div>
+    <section class="card col" style="gap:8px"><div class="row between"><h3>총평</h3><span class="chip">CEFR ${esc(rep.cefr)}</span></div><p style="line-height:1.6">${esc(rep.summary_ko)}</p>
+      ${rep.strengths_ko?.length?`<p class="small" style="color:var(--ok);font-weight:600;margin-top:4px">잘한 점</p>${rep.strengths_ko.map(x=>`<p class="small">· ${esc(x)}</p>`).join('')}`:''}
+      ${rep.improve_ko?.length?`<p class="small" style="color:var(--wrong);font-weight:600;margin-top:4px">개선할 점</p>${rep.improve_ko.map(x=>`<p class="small">· ${esc(x)}</p>`).join('')}`:''}
+    </section>`:''}
+  ${(live.length || rep?.extra_corrections?.length) ? `<section class="col" style="gap:10px"><h2>교정한 문장 <span style="color:var(--accent-ink)">${live.length+(rep?.extra_corrections?.length||0)}</span></h2>
+    ${[...live, ...(rep?.extra_corrections||[])].map(c=>`<div class="citem"><p class="wrong">${esc(c.original)}</p><p class="right">${esc(c.corrected)}</p><p class="why">${esc(c.explanation_ko)}</p></div>`).join('')}</section>`
+    : (!r.loading?`<div class="alert ok">이번 통화에서는 교정할 문장이 없었어요!</div>`:'')}
+  ${rep?.key_expressions?.length?`<section class="col" style="gap:10px"><h2>오늘의 반도체 영업 표현</h2><div class="card dark" style="padding:4px 16px">${rep.key_expressions.map(e=>`<div class="exp"><div><p style="font-weight:600">${esc(e.en)}</p><p class="small" style="color:#CBD5E1;margin-top:3px">${esc(e.ko)}</p></div><button class="mini" data-act="say" data-text="${esc(e.en)}" aria-label="듣기">${svg('vol',14)}</button></div>`).join('')}</div>
+    <button class="btn ghost block" data-act="saveexpr" ${r.exprSaved?'disabled':''}>${r.exprSaved?'표현집에 저장했어요':'표현집에 저장'}</button></section>`:''}
+  ${rep?.next_focus_ko?`<div class="alert info"><b>다음 연습 포인트</b><br>${esc(rep.next_focus_ko)}</div>`:''}
+  <button class="btn primary big block" data-act="again">같은 상황 다시 통화하기</button>
+  <button class="btn ghost block" data-act="tab" data-tab="home">홈으로</button>
+  </main>`;
+}
+
+/* ---------------------------- CALL LOGIC ---------------------------- */
+function startCall(sc){
+  TTS.stop(); STT.abort();
+  RT.call = { scenario:sc, log:[], messages:[], startedAt:Date.now(), state:'thinking', kbd:!STT.kind(), lastHint:null, showHint:false, error:null, draft:'', ctrl:null, ended:false };
+  RT.screen='call'; render();
+  aiTurn('[CALL CONNECTED] The phone rings and the learner answers or you answer. Start the call in character with a natural opening line.');
+}
+function trimmedMessages(msgs){
+  // keep first user msg, drop oldest (assistant,user) pairs beyond 28 messages
+  if (msgs.length<=28) return msgs;
+  const out = [msgs[0]]; const rest = msgs.slice(1); const drop = rest.length - 27; const d = drop + (drop%2);
+  return out.concat(rest.slice(d));
+}
+async function aiTurn(userText, opts={}){
+  const c = RT.call; if (!c || c.ended) return;
+  if (!opts.retry){
+    const last = c.messages[c.messages.length-1];
+    if (last && last.role==='user') last.content += '\n' + userText; // previous turn failed: merge to keep roles alternating
+    else c.messages.push({role:'user', content:userText});
+  }
+  c.state='thinking'; c.error=null; c.showHint=false; render();
+  c.ctrl = new AbortController();
+  try{
+    const raw = await aiJSON({system: buildSystem(c.scenario), messages: trimmedMessages(c.messages), schema:TURN_SCHEMA, name:'phone_turn', maxTokens:700, signal:c.ctrl.signal});
+    if (RT.call!==c || c.ended) return;
+    const t = sanitizeTurn(raw);
+    // attach correction to last learner line
+    const lastMe = [...c.log].reverse().find(m=>m.role==='me');
+    if (lastMe && c.messages.length>1){
+      if (t.has_error){ lastMe.corr = {original:t.original, corrected:t.corrected, category:t.category, explanation_ko:t.explanation_ko}; addMistake(lastMe.corr); }
+      if (t.better) lastMe.better = t.better;
+    }
+    c.messages.push({role:'assistant', content:t.reply});
+    c.log.push({role:'ai', text:t.reply, ko:t.reply_ko});
+    c.lastHint = t.hint_en ? {en:t.hint_en, ko:t.hint_ko} : null;
+    c.state='speaking'; render(); Store.save();
+    const heard = await TTS.speak(t.reply, c.scenario.persona.voice);
+    if (RT.call!==c || c.ended) return;
+    if (c.audioIssue !== !heard){ c.audioIssue = !heard; }
+    if (t.end_call){ endCall(); return; }
+    if (c.state==='speaking'){ c.state='idle'; render(); maybeAutoListen(); }
+  }catch(e){
+    if (RT.call!==c || c.ended || e.code==='aborted') return;
+    c.state='idle'; c.error = e.message || '오류가 발생했어요.'; c.retryable=true; render();
+  }
+}
+function maybeAutoListen(){
+  const c = RT.call;
+  // Web Speech can start without a fresh tap once permission is granted; Claude dictation needs a tap.
+  if (c && c.state==='idle' && !c.kbd && S.settings.autoListen && STT.kind()==='web' && !IS_IOS) startListening(true);
+}
+function startListening(auto=false){
+  const c = RT.call; if (!c) return;
+  TTS.stop();
+  c.autoStarted = auto;
+  const ok = STT.start(t=>setLive(t), text=>onHeard(text));
+  if (ok){ c.state='listening'; c.draft=''; render(); setLive(''); }
+  else if (!auto){ c.kbd = true; render(); toast('음성 인식을 시작할 수 없어 키보드로 전환했어요.'); }
+}
+function onHeard(text){
+  const c = RT.call; if (!c || c.ended) return;
+  setLive('');
+  text = (text||'').trim();
+  if (!text){
+    c.state='idle';
+    if (STT.denied) c.kbd=true;
+    render();
+    if (!STT.denied && !c.autoStarted) toast('잘 안 들렸어요. 다시 말해 주세요.');
+    return;
+  }
+  if (!S.settings.autoSend){ c.state='review'; c.draft=text; render(); return; }
+  sendUser(text);
+}
+function sendUser(text){
+  const c = RT.call; if (!c || c.ended) return;
+  text = text.trim().slice(0,800); if (!text) return;
+  c.draft=''; c.log.push({role:'me', text});
+  aiTurn(text);
+}
+function endCall(){
+  const c = RT.call; if (!c || c.ended) return;
+  c.ended = true; c.state='ended';
+  try{ c.ctrl && c.ctrl.abort(); }catch(e){}
+  STT.abort(); TTS.stop(); clearInterval(RT.timerI);
+  c.duration = (Date.now()-c.startedAt)/1000;
+  const meTurns = c.log.filter(m=>m.role==='me').length;
+  if (meTurns < 2){
+    RT.call = null; toast('대화가 너무 짧아 기록하지 않았어요.'); go('home'); return;
+  }
+  const sc = c.scenario;
+  const session = { id:uid(), ts:Date.now(), date:todayStr(), week: sc.week||currentWeek(), scenarioId: sc.id, title: sc.title, duration: Math.round(c.duration), turns: meTurns, scores:null, cefr:'', summary:'' };
+  S.done[sc.id] = (S.done[sc.id]||0)+1;
+  S.sessions.push(session);
+  if (S.sessions.length > 400) S.sessions = S.sessions.slice(-400);
+  Store.save();
+  RT.report = { session, data:null, loading:true, error:null, liveCorr: c.log.filter(m=>m.corr).map(m=>m.corr), call:c, exprSaved:false };
+  RT.lastScenario = sc;
+  RT.call = null; RT.screen='report'; render();
+  runReport();
+}
+async function runReport(){
+  const r = RT.report; r.loading=true; r.error=null; render();
+  try{
+    const {system, messages} = buildReportPrompt(r.call);
+    const raw = await aiJSON({system, messages, schema:REPORT_SCHEMA, name:'call_report', maxTokens:1800});
+    const clamp = v => Math.max(0, Math.min(100, Math.round(Number(v)||0)));
+    const d = {
+      grammar:clamp(raw.grammar), vocabulary:clamp(raw.vocabulary), fluency:clamp(raw.fluency), task:clamp(raw.task),
+      cefr: String(raw.cefr||'').slice(0,6), summary_ko:String(raw.summary_ko||''),
+      strengths_ko: arr(raw.strengths_ko).slice(0,3).map(String), improve_ko: arr(raw.improve_ko).slice(0,3).map(String),
+      extra_corrections: arr(raw.extra_corrections).filter(x=>x&&x.original&&x.corrected&&norm(x.original)!==norm(x.corrected)).slice(0,5),
+      key_expressions: arr(raw.key_expressions).filter(x=>x&&x.en).slice(0,5),
+      next_focus_ko: String(raw.next_focus_ko||''),
+    };
+    // de-dupe extra corrections against live ones
+    const seen = new Set(r.liveCorr.map(c=>norm(c.corrected)));
+    d.extra_corrections = d.extra_corrections.filter(x=>!seen.has(norm(x.corrected)));
+    d.extra_corrections.forEach(x=>addMistake({...x, category:'grammar'}));
+    r.data = d; r.loading=false;
+    const s = S.sessions.find(x=>x.id===r.session.id);
+    if (s){ s.scores={grammar:d.grammar,vocabulary:d.vocabulary,fluency:d.fluency,task:d.task}; s.cefr=d.cefr; s.summary=d.summary_ko; }
+    Store.save();
+  }catch(e){ r.loading=false; r.error = (e && e.message) || '리포트를 만들지 못했어요.'; }
+  if (RT.report===r && RT.screen==='report') render();
+}
+function arr(v){ return Array.isArray(v)?v:[]; }
+function addMistake(c){
+  const key = norm(c.corrected);
+  if (!key) return;
+  const ex = S.notebook.find(n=>norm(n.corrected)===key || norm(n.original)===norm(c.original));
+  if (ex){ ex.count++; ex.lastSeen=Date.now(); ex.mastered=false; return; }
+  S.notebook.push({id:uid(), original:c.original, corrected:c.corrected, explanation_ko:c.explanation_ko||'', category:c.category||'grammar', count:1, firstSeen:Date.now(), lastSeen:Date.now(), mastered:false});
+  if (S.notebook.length>500){ S.notebook.sort((a,b)=>(b.mastered?0:1)-(a.mastered?0:1)||b.lastSeen-a.lastSeen); S.notebook = S.notebook.slice(0,500); }
+}
+
+/* ---------------------------- EVENTS ---------------------------- */
+document.addEventListener('click', e=>{
+  const el = e.target.closest('[data-act]'); if (!el) return;
+  const act = el.dataset.act;
+  const c = RT.call;
+  switch(act){
+    case 'tab': if (RT.call && !RT.call.ended){ endCall(); return; } go(el.dataset.tab); break;
+    case 'brief': { const sc = scenarioById(el.dataset.id); if(!sc) return; RT.brief = sc; go('brief'); break; }
+    case 'startcall': {
+      const sc = {...RT.brief};
+      if (sc.kind==='free'){
+        const sit = (document.getElementById('free-sit')?.value||'').trim();
+        const role = (document.getElementById('free-role')?.value||'').trim();
+        if (sit.length<5){ toast('연습할 통화 상황을 적어 주세요.'); return; }
+        sc.situation = 'The learner described the call they want to practice (in Korean or English): "'+sit.slice(0,600)+'". Play the other party realistically.';
+        sc.goal_en = 'Handle this call successfully: '+sit.slice(0,300); sc.goal_ko = sit.slice(0,120);
+        RT.brief.freeSit = sc.freeSit = sit; RT.brief.freeRole = sc.freeRole = role;
+        if (role) sc.persona = {...sc.persona, title: role.slice(0,80), org:'(as described by the learner)'};
+      }
+      // unlock audio inside the user gesture
+      TTS.prime();
+      startCall(sc); break;
+    }
+    case 'mic': {
+      if (!c) return;
+      if (!STT.kind()){ const m=document.getElementById('msg'); if (m){ TTS.stop(); m.focus(); } return; } // open keyboard for OS dictation
+      if (c.state==='listening'){ STT.stop(); return; }
+      if (c.state==='thinking'||c.state==='ended') return;
+      startListening(); break;
+    }
+    case 'kbd': if (!c) return; c.kbd=!c.kbd; if (c.state==='listening'){ STT.abort(); c.state='idle'; } render(); break;
+    case 'hidetip': if (c){ c.tipHidden=true; render(); } break;
+    case 'hidehelp': RT.helpHidden=true; Store.lsSet('fabtalk.help','1'); render(); break;
+    case 'hint': if (!c) return; c.showHint=!c.showHint; render(); break;
+    case 'replay': { if (!c) return; const last=[...c.log].reverse().find(m=>m.role==='ai'); if (last){ STT.abort(); if(c.state==='listening') c.state='idle'; TTS.prime(); render(); TTS.speak(last.text, c.scenario.persona.voice).then(ok=>{ if (RT.call===c){ const was=c.audioIssue; c.audioIssue=!ok; if (was!==c.audioIssue) render(); if(!ok) toast(IS_IOS?'여전히 소리가 안 나면 무음 모드를 끄고 Safari를 새로고침해 보세요.':'여전히 소리가 안 나면 볼륨과 블루투스 연결을 확인하세요.',5000); } }); } break; }
+    case 'soundtest': { TTS.prime(); toast('소리 테스트 중…'); TTS.speak('Hello! This is a sound test. Can you hear me clearly?', 'buttery').then(ok=>toast(ok?'소리가 들렸다면 정상이에요. 안 들리면 '+(IS_IOS?'무음 모드와 볼륨을 확인하세요.':'볼륨을 확인하세요.'):'음성 출력이 막혀 있어요. '+(IS_IOS?'무음 모드를 끄고 볼륨을 올린 뒤 다시 눌러 보세요.':'볼륨과 블루투스를 확인하세요.'), 5000)); break; }
+    case 'ko': { if (!c) return; const m=c.log[+el.dataset.i]; if (m){ m.showKo=!m.showKo; render(); } break; }
+    case 'say': TTS.prime(); TTS.speak(el.dataset.text, (RT.call&&RT.call.scenario.persona.voice)||'buttery'); break;
+    case 'endcall': if (c){ if (c.log.filter(m=>m.role==='me').length>=2) endCall(); else ask('아직 대화가 짧아요. 통화를 끝낼까요? (기록되지 않아요)', '끝내기').then(ok=>{ if(ok && RT.call===c) endCall(); }); } break;
+    case 'retry': if (c){ c.error=null; aiTurn(null, {retry:true}); } break;
+    case 'togglecorr': S.settings.showCorrections = el.checked; Store.save(); render(); break;
+    case 'retryreport': runReport(); break;
+    case 'again': if (RT.lastScenario){ RT.brief = RT.lastScenario.kind==='review' ? scenarioById('review') : RT.lastScenario; go('brief'); } break;
+    case 'saveexpr': {
+      const r = RT.report; if (!r?.data) return;
+      r.data.key_expressions.forEach(x=>{ if (!S.expressions.some(y=>norm(y.en)===norm(x.en))) S.expressions.push({en:x.en, ko:x.ko||'', added:Date.now()}); });
+      if (S.expressions.length>600) S.expressions = S.expressions.slice(-600);
+      r.exprSaved = true; Store.save(); render(); toast('표현집에 저장했어요.'); break;
+    }
+    case 'nbtab': RT.nbTab = el.dataset.t; render(); break;
+    case 'master': { const n=S.notebook.find(x=>x.id===el.dataset.id); if(n){ n.mastered=!n.mastered; Store.save(); render(); } break; }
+    case 'setweek': { const w=+el.dataset.w; S.weekOverride = w; Store.save(); toast(w+'주차로 변경했어요.'); go('home'); break; }
+    case 'autoweek': S.weekOverride=null; Store.save(); render(); break;
+    case 'testapi': testApi(); break;
+    case 'export': { const ta=document.getElementById('backup'); ta.hidden=false; ta.value=JSON.stringify({...S, settings:{...S.settings, apiKey:''}}); ta.select(); try{ navigator.clipboard.writeText(ta.value).then(()=>toast('백업 데이터를 복사했어요. 메모장 등에 보관하세요.')); }catch(_){ toast('표시된 텍스트를 길게 눌러 복사하세요.'); } break; }
+    case 'import': { const ta=document.getElementById('backup'); if (ta.hidden){ ta.hidden=false; ta.value=''; ta.focus(); toast('백업 텍스트를 붙여넣고 다시 누르세요.'); return; } try{ const o=JSON.parse(ta.value); if(!o||!Array.isArray(o.sessions)) throw 0; const key=S.settings.apiKey; S=migrate(o); S.settings.apiKey=key; Store.save(); toast('복원했어요.'); render(); }catch(_){ toast('백업 형식이 올바르지 않아요.'); } break; }
+    case 'reset': ask('모든 학습 기록을 지울까요? 되돌릴 수 없어요.', '초기화').then(ok=>{ if(!ok) return; const key=S.settings.apiKey; S=DEFAULT_STATE(); S.settings.apiKey=key; Store.save(); toast('초기화했어요.'); go('home'); }); break;
+    case 'dlg-ok': case 'dlg-cancel': closeAsk(act==='dlg-ok'); break;
+  }
+});
+/* in-page confirm dialog (browser confirm() is blocked inside artifacts) */
+let askResolve = null;
+function ask(msg, okLabel='확인'){
+  closeAsk(false);
+  const d = document.createElement('div');
+  d.id='dlg'; d.className='dlg-back';
+  d.innerHTML = `<div class="dlg" role="alertdialog" aria-modal="true" aria-labelledby="dlg-msg"><p id="dlg-msg">${esc(msg)}</p><div class="row" style="justify-content:flex-end;gap:8px;margin-top:16px"><button class="btn ghost" data-act="dlg-cancel">취소</button><button class="btn primary" data-act="dlg-ok">${esc(okLabel)}</button></div></div>`;
+  document.body.appendChild(d);
+  d.querySelector('[data-act=dlg-ok]').focus();
+  return new Promise(r=>{ askResolve = r; });
+}
+function closeAsk(v){ const d=document.getElementById('dlg'); if(d) d.remove(); if(askResolve){ const r=askResolve; askResolve=null; r(v); } }
+document.addEventListener('submit', e=>{
+  const f = e.target.closest('[data-act="sendform"]'); if (!f) return;
+  e.preventDefault();
+  const c = RT.call; if (!c || c.state==='thinking') return;
+  const v = document.getElementById('msg').value.trim(); if (!v) return;
+  if (c.state==='listening') STT.abort();
+  TTS.prime();
+  sendUser(v);
+});
+document.addEventListener('input', e=>{
+  const el = e.target;
+  if (el.id==='msg' && RT.call) RT.call.draft = el.value;
+  if (el.dataset.set==='ttsRate'){ const v=document.getElementById('ratev'); if(v) v.textContent=Math.round(el.value*100)+'%'; }
+});
+document.addEventListener('change', e=>{
+  const el = e.target; const k = el.dataset.set; if (!k) return;
+  let v = el.type==='checkbox' ? el.checked : el.value;
+  if (k==='ttsRate') v = parseFloat(v);
+  if (k==='weeklyGoal') v = parseInt(v,10);
+  if (k==='startDate'){ if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) return; S.startDate=v; S.weekOverride=null; Store.save(); toast('시작일을 바꿨어요. 현재 '+currentWeek()+'주차예요.'); return; }
+  if (k==='apiKey') v = String(v).trim();
+  S.settings[k] = v; Store.save();
+  if (k==='ttsEngine'||k==='model') render();
+});
+document.addEventListener('visibilitychange', ()=>{
+  if (!document.hidden) return;
+  if (RT.call && RT.call.state==='listening') STT.stop();
+  Store.flushNow();
+});
+window.addEventListener('pagehide', ()=>Store.flushNow());
+
+async function testApi(){
+  if (!S.settings.apiKey){ toast('API 키를 먼저 입력하세요.'); return; }
+  toast('연결 확인 중…', 8000);
+  try{
+    const r = await apiJSON({system:'Reply briefly.', messages:[{role:'user', content:'Say OK.'}], schema:{type:'object', properties:{ok:{type:'string'}}, required:['ok']}, name:'ping', maxTokens:50});
+    Store.save(); toast('연결 성공! 통화를 시작할 수 있어요.'); render();
+  }catch(e){ toast(e.message||'연결 실패', 5000); }
+}
+
+/* ---------------------------- BOOT ---------------------------- */
+(async function boot(){
+  RT.booting = true;
+  Store.loadLocal();
+  render(); // render immediately with this device's data
+  await initCaps();
+  await Store.load();
+  if (!S.startDate) S.startDate = todayStr();
+  RT.booting = false;
+  render();
+  if ('serviceWorker' in navigator && location.protocol==='https:' && !RT.caps.sample){
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+  }
+})();
+</script>
+</body>
+</html>
